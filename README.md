@@ -62,6 +62,6 @@ Assets
 [addon-doc-Filaman-System]: https://github.com/netscout2001/ha-filaman-system/blob/main/filaman-system/README.md
 [Filaman-System-version-shield]: https://img.shields.io/badge/version-v0.1.9--0-blue.svg
 [Filaman-System-update-shield]: https://img.shields.io/badge/Updated%20on-2026--02--17-blue.svg
-[preview]: https://github.com/netscout2001/ha-filaman-system/blob/main/preview.png
+[preview]: https://raw.githubusercontent.com/netscout2001/ha-filaman-system/refs/heads/main/preview.png
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
