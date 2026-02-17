@@ -70,4 +70,4 @@ Assets
 [Filaman-System-update-shield]: https://img.shields.io/badge/Updated%20on-2026--02--17-blue.svg
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[preview]: [https://github.com/netscout2001/filaman-system/refs/heads/main/preview.png](https://github.com/netscout2001/ha-filaman-system/blob/main/preview.png)
+[preview]: https://github.com/netscout2001/ha-filaman-system/blob/main/preview.png
