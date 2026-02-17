@@ -9,7 +9,9 @@ arch:
 startup: services
 init: false
 map:
-  - addon_config:rw
+  #- addon_config:rw
+  - type: addon_config
+    read_only: False
   - type: app
     read_only: False
   - type: data
