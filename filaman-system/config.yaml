@@ -1,4 +1,4 @@
-name: FilaMan System
+name: "FilaMan System"
 version: "0.1.9-0"
 slug: filaman_system_app
 description: "A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support."
