@@ -12,7 +12,7 @@ map:
   - addon_config:rw
   - data:rw
 ports:
-  8083/tcp: 8000
+  8083/tcp: 8083
 ports_description:
   8083/tcp: "Web interface port (fixed: 8083, do not change). If another add-on uses this host port, HA will show an error."
 webui: "http://[HOST]:[PORT:8083]"
