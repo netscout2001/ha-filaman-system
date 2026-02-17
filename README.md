@@ -1,4 +1,4 @@
-# Home Assistant add-on repository
+# Home Assistant Filaman System add-on repository
 
 ## Installation
 
@@ -9,11 +9,6 @@ If you want to do add it manually, use the following URL to add this repository:
 ```
 https://github.com/netscout2001/ha-filaman-system
 ```
-
-## Add-ons
-
-This repository contains the following add-ons:
-
 
 ### [FilaMan System - Filament Management System]
 A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support.
