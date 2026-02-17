@@ -8,4 +8,4 @@ FROM ghcr.io/fire-devils/filaman-system:v0.1.9
 #RUN mkdir -p /app/data
 
 # deklarieren, dass /app/data persistent sein soll
-VOLUME ["/app/data"]
+VOLUME ["/app"]
