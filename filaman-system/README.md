@@ -15,20 +15,22 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
    - Ensure no other add-on uses this host port.
 
 2. **Data directories**
-	├── backend/
-	│   ├── app/
-	│   │   ├── core/          # Konfiguration, Datenbank, Sicherheit
-	│   │   ├── modules/       # Domain-Module
-	│   │   └── plugins/       # Drucker-Plugins
-	│   ├── alembic/           # Datenbank-Migrationen
-	│   └── tests/             # Backend-Tests
-	├── frontend/
-	│   ├── src/
-	│   │   ├── pages/         # Astro-Seiten
-	│   │   ├── layouts/       # Seiten-Layouts
-	│   │   └── components/    # UI-Komponenten
-	│   └── dist/              # Produktions-Build
-	└── spec/  
+
+├── backend/
+│   ├── app/
+│   │   ├── core/          # Konfiguration, Datenbank, Sicherheit
+│   │   ├── modules/       # Domain-Module
+│   │   └── plugins/       # Drucker-Plugins
+│   ├── alembic/           # Datenbank-Migrationen
+│   └── tests/             # Backend-Tests
+├── frontend/
+│   ├── src/
+│   │   ├── pages/         # Astro-Seiten
+│   │   ├── layouts/       # Seiten-Layouts
+│   │   └── components/    # UI-Komponenten
+│   └── dist/              # Produktions-Build
+└── spec/                  # Projektspezifikationen 
+
 3. **Version numbering**
    - Using **x.x.x-x** format.  
    - The first three numbers match the official Filaman System version (e.g., `0.1.9`).  
