@@ -1,0 +1,27 @@
+name: FilaMan System
+version: "0.1.9-0"
+slug: filaman-system
+description: "A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support."
+arch:
+  - amd64
+  - aarch64
+  - armv7
+startup: services
+init: false
+map:
+  - addon_config:rw
+  - data:rw
+ports:
+  8083/tcp: 8000
+ports_description:
+  8083/tcp: "Web interface port (fixed: 8083, do not change). If another add-on uses this host port, HA will show an error."
+webui: "http://[HOST]:[PORT:8083]"
+environment:
+  FILAMAN_SYSTEM_HOST: "0.0.0.0"
+  FILAMAN_SYSTEM_PORT: "8083"
+  FILAMAN_SYSTEM_DIR_DATA: "/app/data"
+  FILAMAN_SYSTEM_DIR_BACKUPS: "/app/data/backups"
+  FILAMAN_SYSTEM_DIR_LOGS: "/app/data/logs"
+homeassistant_api: false
+hassio_api: false
+privileged: []
