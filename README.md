@@ -34,14 +34,14 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 1. [Add the repository][repository] to your Home Assistant add-ons.  
 2. Install the **Filaman System** add-on.  
 3. Start the add-on.  
-4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:8083`.  
+4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<8000/PORT>`.  
 
 
 ## Troubleshooting
 
 | Problem | Possible cause | Solution |
 |---------|----------------|----------|
-| **Add-on not starting** | Port 8083 already in use | Make sure no other add-on is using port 8083, or change the conflicting add-on port. |
+| **Add-on not starting** | Port 8000 already in use | Make sure no other add-on is using port 8000, or change the conflicting add-on port. |
 
 ## Support
 - If you encounter any issues, please open an issue on the [Netscout2001/ha-filaman-system GitHub repository](https://github.com/netscout2001/ha-filaman-system/issues).  
