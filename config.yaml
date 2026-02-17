@@ -10,6 +10,7 @@ startup: services
 init: false
 map:
   - addon_config:rw
+  - app:rw
   - data:rw
 #docker_api: true
 ports:
