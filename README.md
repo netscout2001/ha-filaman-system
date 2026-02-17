@@ -15,8 +15,8 @@ https://github.com/netscout2001/ha-filaman-system
 ![Latest Version][Filaman-System-version-shield]
 ![Filaman-System-update-shield]
 
-![Supports amd64 Architecture][Filaman-System-amd64-shield]
-![Supports aarch64 Architecture][Filaman-System-aarch64-shield]
+![Supports amd64 Architecture][amd64-shield]
+![Supports aarch64 Architecture][aarch64-shield]
 
 A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support.
 This add-on is based on [FilaMan - Filament Management System](https://github.com/Fire-Devils/filaman-system).
@@ -65,9 +65,7 @@ Assets
 [addon-Filaman-System]: https://github.com/netscout2001/ha-filaman-system/tree/main/filaman-system
 [addon-doc-Filaman-System]: https://github.com/netscout2001/ha-filaman-system/blob/main/filaman-system/README.md
 [Filaman-System-version-shield]: https://img.shields.io/badge/version-v0.1.9--0-blue.svg
-[Filaman-System-aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[Filaman-System-amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [Filaman-System-update-shield]: https://img.shields.io/badge/Updated%20on-2026--02--17-blue.svg
+[preview]: https://github.com/netscout2001/ha-filaman-system/blob/main/preview.png
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[preview]: https://github.com/netscout2001/ha-filaman-system/blob/main/preview.png
