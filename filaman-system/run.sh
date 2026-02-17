@@ -3,11 +3,11 @@ set -e
 
 echo "[INFO] Starting Filaman System add-on..."
 
-CONFIG_DIR="/app/data"
-FILAMAN_SYSTEM_DIR_DATA="$CONFIG_DIR"
-SFILAMAN_SYSTEM_DIR_BACKUPS="$CONFIG_DIR/backups"
-FILAMAN_SYSTEM_DIR_LOGS="$CONFIG_DIR/logs"
-FILAMAN_SYSTEM_DIR_CACHE="$CONFIG_DIR/cache"
+BASE_DIR="/app/data"
+FILAMAN_SYSTEM_DIR_DATA="$BASE_DIR"
+SFILAMAN_SYSTEM_DIR_BACKUPS="$BASEDIR/backups"
+FILAMAN_SYSTEM_DIR_LOGS="$BASE_DIR/logs"
+FILAMAN_SYSTEM_DIR_CACHE="$BASE_DIR/cache"
 OPTIONS_FILE="/data/options.json"
 
 # Making directories
@@ -16,8 +16,8 @@ mkdir -p "$FILAMAN_SYSTEM_DIR_DATA" "$FILAMAN_SYSTEM_DIR_BACKUPS" "$FILAMAN_SYST
 
 # Permissions
 echo "[INFO] Setting correct permissions on add-on directories..."
-chown -R 1000:1000 "$CONFIG_DIR" || echo "[WARN] Could not change owner (possibly already correct)"
-chmod -R 755 "$CONFIG_DIR" || echo "[WARN] Could not change permissions (possibly already correct)"
+chown -R 1000:1000 "$BASE_DIR" || echo "[WARN] Could not change owner (possibly already correct)"
+chmod -R 755 "$BASE_DIR" || echo "[WARN] Could not change permissions (possibly already correct)"
 
 # --- Timezone diagnostic ---
 echo "[INFO] --- Timezone diagnostic ---"
