@@ -15,7 +15,7 @@ https://github.com/netscout2001/ha-filaman-system
 This repository contains the following add-ons:
 
 
-### [FilaMan - Filament Management Syste-][addon-Filaman]
+### [FilaMan System - Filament Management System]
 A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support.
 
 ![Latest Version][Filaman-System-version-shield]
