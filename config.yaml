@@ -10,7 +10,6 @@ startup: services
 init: false
 map:
   - addon_config:rw
-  - app:rw
   - type: app
     read_only: False
   - type: data
