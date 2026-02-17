@@ -23,15 +23,25 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 │   │   ├── core/          # Konfiguration, Datenbank, Sicherheit
 
 │   │   ├── modules/       # Domain-Module
+
 │   │   └── plugins/       # Drucker-Plugins
+
 │   ├── alembic/           # Datenbank-Migrationen
+
 │   └── tests/             # Backend-Tests
+
 ├── frontend/
+
 │   ├── src/
+
 │   │   ├── pages/         # Astro-Seiten
+
 │   │   ├── layouts/       # Seiten-Layouts
+
 │   │   └── components/    # UI-Komponenten
+
 │   └── dist/              # Produktions-Build
+
 └── spec/                  # Projektspezifikationen 
 
 3. **Version numbering**
