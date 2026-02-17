@@ -17,8 +17,11 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 2. **Data directories**
 
 ├── backend/
+
 │   ├── app/
+
 │   │   ├── core/          # Konfiguration, Datenbank, Sicherheit
+
 │   │   ├── modules/       # Domain-Module
 │   │   └── plugins/       # Drucker-Plugins
 │   ├── alembic/           # Datenbank-Migrationen
