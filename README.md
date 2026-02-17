@@ -22,11 +22,7 @@ A filament management system for 3D printing with spool tracking, AMS integratio
 This add-on is based on [FilaMan - Filament Management System](https://github.com/Fire-Devils/filaman-system).
 
 ## Notes
-1. **Port**
-   - Fixed to `8083`. Changing the port in the add-on configuration has no effect.
-   - Ensure no other add-on uses this host port.
-
-2. **Version numbering**
+1. **Version numbering**
    - Using **x.x.x-x** format.  
    - The first three numbers match the official Filaman System version (e.g., `0.1.9`).  
    - The number after the dash (`-X`) is for changes specific to this Home Assistant add-on (e.g., `0.1.9-0`).  
