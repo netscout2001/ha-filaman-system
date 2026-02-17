@@ -1,4 +1,4 @@
-# Home Assistant HA-FilaMan-System add-on repository
+# Home Assistant add-on repository
 
 ## Installation
 
