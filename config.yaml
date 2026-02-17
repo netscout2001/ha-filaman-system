@@ -8,10 +8,6 @@ arch:
   - aarch64
 startup: services
 init: false
-#map:
-#  - addon_config:rw
-#  - data:rw
-#  - app:rw
 ports:
   8000/tcp: 8000
 ports_description:
