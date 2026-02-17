@@ -4,7 +4,6 @@
 
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports aarch64 Architecture][aarch64-shield]
-![Supports armv7 Architecture][armv7-shield]
 
 ## About
 This add-on is based on [FilaMan - Filament Management System](https://github.com/Fire-Devils/filaman-system).
@@ -50,7 +49,6 @@ Assets
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [version]: https://img.shields.io/badge/version-v0.1.9--0-blue.svg
 [Filaman-System-update-shield]: https://img.shields.io/badge/Updated%20on-2026--02--17-blue.svg
 [repository]: https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/netscout2001/ha-filaman-system
