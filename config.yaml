@@ -11,6 +11,8 @@ init: false
 map:
   - addon_config:rw
   - app:rw
+  - data:rw
+  - app/data:rw
 #docker_api: true
 ports:
   8000/tcp: 8000
