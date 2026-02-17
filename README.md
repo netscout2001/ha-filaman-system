@@ -23,7 +23,6 @@ A filament management system for 3D printing with spool tracking, AMS integratio
 
 ![Supports amd64 Architecture][Filaman-System-amd64-shield]
 ![Supports aarch64 Architecture][Filaman-System-aarch64-shield]
-![Supports armv7 Architecture][Filaman-System-armv7-shield]
 
 -------------------------------
 
