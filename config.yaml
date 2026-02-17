@@ -9,14 +9,8 @@ arch:
 startup: services
 init: false
 map:
-  #- addon_config:rw
-  - type: addon_config
-    read_only: False
-  - type: app
-    read_only: False
-  - type: data
-    read_only: False
-#docker_api: true
+  - addon_config:rw
+  - app:rw
 ports:
   8000/tcp: 8000
 ports_description:
