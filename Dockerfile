@@ -4,3 +4,8 @@
 # Actual Release
 FROM ghcr.io/fire-devils/filaman-system:v0.1.9
 
+# sicherstellen, dass der Datenordner vorhanden ist (das Add-on mountet /data)
+RUN mkdir -p /app/data
+
+# deklarieren, dass /app/data persistent sein soll
+VOLUME ["/app/data"]
