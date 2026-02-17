@@ -34,7 +34,7 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 1. [Add the repository][repository] to your Home Assistant add-ons.  
 2. Install the **Filaman System** add-on.  
 3. Start the add-on.  
-4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<8000/PORT>`.  
+4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`.  
 
 
 ## Troubleshooting
