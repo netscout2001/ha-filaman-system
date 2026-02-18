@@ -55,7 +55,75 @@ jobs:
         run: |
           echo "upstream tag: ${{ steps.upstream.outputs.tag }}"
           echo "last synced : ${{ steps.readlast.outputs.last }}"
+          
+      - name: "Wait for upstream image to be available"
+        if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
+        run: |
+          set -euo pipefail
 
+          NEW_TAG="${{ steps.upstream.outputs.tag }}"
+          # Note: lowercase owner used for GHCR paths
+          UPSTREAM_IMAGE="ghcr.io/fire-devils/filaman-system"
+          IMAGE_REF="${UPSTREAM_IMAGE}:${NEW_TAG}"
+
+          # Retry configuration — adjust to taste
+          MAX_RETRIES=20
+          SLEEP_SECONDS=30
+          TOTAL_WAIT=$((MAX_RETRIES * SLEEP_SECONDS))
+
+          echo "Checking availability of upstream image: ${IMAGE_REF}"
+          echo "Will try up to ${MAX_RETRIES} times (total ~${TOTAL_WAIT}s), sleeping ${SLEEP_SECONDS}s between tries."
+
+          try_manifest_check() {
+            # Docker Registry V2 manifest endpoint (GHCR)
+            manifest_url="https://ghcr.io/v2/fire-devils/filaman-system/manifests/${NEW_TAG}"
+            http_code=$(curl -s -o /dev/null -w "%{http_code}" -H "Accept: application/vnd.docker.distribution.manifest.v2+json" "${manifest_url}" || echo "000")
+            if [ "$http_code" = "200" ]; then
+              return 0
+            fi
+            return 1
+          }
+
+          try_docker_pull() {
+            # Attempt docker pull (fallback). Runners have docker available on ubuntu-latest
+            if docker pull "${IMAGE_REF}" >/dev/null 2>&1; then
+              # remove image to conserve runner disk
+              docker image rm "${IMAGE_REF}" >/dev/null 2>&1 || true
+              return 0
+            fi
+            return 1
+          }
+
+          found=0
+          attempt=0
+          while [ "$attempt" -lt "$MAX_RETRIES" ]; do
+            attempt=$((attempt + 1))
+            echo "Attempt ${attempt}/${MAX_RETRIES} — manifest check..."
+            if try_manifest_check; then
+              echo "Manifest found for ${IMAGE_REF} (manifest check succeeded)."
+              found=1
+              break
+            fi
+
+            echo "Manifest not found (or not publicly queryable). Trying docker pull..."
+            if try_docker_pull; then
+              echo "docker pull succeeded for ${IMAGE_REF}."
+              found=1
+              break
+            fi
+
+            echo "Image not available yet. Sleeping ${SLEEP_SECONDS}s..."
+            sleep "${SLEEP_SECONDS}"
+          done
+
+          if [ "$found" -ne 1 ]; then
+            echo "ERROR: Upstream image ${IMAGE_REF} not available after ${MAX_RETRIES} attempts (~${TOTAL_WAIT}s)."
+            echo "Aborting to avoid creating a release that references a missing image."
+            exit 4
+          fi
+
+          echo "Upstream image ${IMAGE_REF} is available — continuing with release sync."
+          
       - name: "Prepare repo changes (only if new upstream release)"
         if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
         run: |
