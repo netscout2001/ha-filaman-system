@@ -1,0 +1,153 @@
+name: Sync new upstream release -> create release and update files
+
+# schedule (every 15 minutes) + manual trigger
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+# allow workflow to push commits and create releases
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  check-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo (to edit files)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release from upstream (Fire-Devils/filaman-system)
+        id: upstream
+        run: |
+          # fetch latest release JSON
+          resp=$(curl -fsSL "https://api.github.com/repos/Fire-Devils/filaman-system/releases/latest")
+          tag=$(echo "$resp" | jq -r .tag_name)
+          name=$(echo "$resp" | jq -r .name)
+          body=$(echo "$resp" | jq -r .body)
+          html_url=$(echo "$resp" | jq -r .html_url)
+
+          if [ -z "$tag" ] || [ "$tag" = "null" ]; then
+            echo "No upstream release found or API failure"
+            exit 2
+          fi
+
+          # output for next steps
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+          echo "name=$name" >> $GITHUB_OUTPUT
+          # protect newlines by base64-encoding the body
+          echo "body_b64=$(printf '%s' "$body" | base64 -w0)" >> $GITHUB_OUTPUT
+          echo "html_url=$html_url" >> $GITHUB_OUTPUT
+
+      - name: Read last synced upstream tag (if any)
+        id: readlast
+        run: |
+          if [ -f .last_upstream_release_tag ]; then
+            last=$(cat .last_upstream_release_tag)
+          else
+            last=""
+          fi
+          echo "last=$last" >> $GITHUB_OUTPUT
+
+      - name: Debug: show tags
+        run: |
+          echo "upstream tag: ${{ steps.upstream.outputs.tag }}"
+          echo "last synced : ${{ steps.readlast.outputs.last }}"
+
+      # only proceed when tag changed
+      - name: Prepare repo changes (only if new upstream release)
+        if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
+        run: |
+          set -e
+
+          NEW_TAG="${{ steps.upstream.outputs.tag }}"
+          RELEASE_NAME="${{ steps.upstream.outputs.name }}"
+          RELEASE_BODY_B64="${{ steps.upstream.outputs.body_b64 }}"
+          RELEASE_BODY=$(echo "$RELEASE_BODY_B64" | base64 -d)
+          RELEASE_LINK="${{ steps.upstream.outputs.html_url }}"
+          TODAY=$(date --utc +%Y-%m-%d)
+
+          echo "Updating files for upstream tag $NEW_TAG"
+
+          # 1) Update CHANGELOG.md — prepend new entry (title + body + link)
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+          fi
+
+          printf "## %s — %s\n\n%s\n\n(Upstream release: %s)\n\n" "$NEW_TAG" "$TODAY" "$RELEASE_BODY" "$RELEASE_LINK" > /tmp/new_changelog_entry.md
+          # combine new entry + old changelog
+          cat /tmp/new_changelog_entry.md CHANGELOG.md > /tmp/CHANGELOG.new && mv /tmp/CHANGELOG.new CHANGELOG.md
+
+          # 2) Update Dockerfile — replace upstream image tag
+          # Adjust the regex below if your Dockerfile references the image differently.
+          # Example patterns handled:
+          #   ghcr.io/Fire-Devils/filaman-system:oldtag
+          #   docker.io/fire-devils/filaman-system:oldtag
+          if [ -f Dockerfile ]; then
+            # set upstream image (fallback value, adjust if needed)
+            UPSTREAM_IMAGE="ghcr.io/fire-devils/filaman-system"
+            # replace occurrences of the upstream image with new tag
+            # note: uses a robust sed to replace :<anything> after image name
+            sed -E -i.bak "s#(${UPSTREAM_IMAGE})(:[^[:space:]\"]+)?#\1:${NEW_TAG}#g" Dockerfile || true
+            rm -f Dockerfile.bak || true
+          else
+            echo "WARNING: Dockerfile not found in repo root; skipping Dockerfile update"
+          fi
+
+          # 3) Update config.yaml — replace version line
+          # This assumes a line like: version: "v1.2.3"  or version: v1.2.3
+          if [ -f config.yaml ]; then
+            # safe inplace replace: if version key exists, replace it; otherwise append
+            if grep -qE '^version:' config.yaml; then
+              sed -E -i.bak "s/^version:.*$/version: \"${NEW_TAG}-0\"/" config.yaml || true
+              rm -f config.yaml.bak || true
+            else
+              echo "" >> config.yaml
+              echo "version: \"${NEW_TAG}-0\"" >> config.yaml
+            fi
+          else
+            echo "WARNING: config.yaml not found in repo root; creating one with version"
+            printf "version: \"%s\"\n" "$NEW_TAG" > config.yaml
+          fi
+
+          # 4) record last tag to avoid repeated runs
+          echo "$NEW_TAG" > .last_upstream_release_tag
+
+          # 5) commit & push changes
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md Dockerfile config.yaml .last_upstream_release_tag || true
+          git commit -m "chore: sync from upstream release ${NEW_TAG}" || (echo "No changes to commit" && exit 1)
+          git push origin HEAD:main
+
+      # create release in this repo (after commit) using GITHUB_TOKEN
+      - name: Create release in this repo (only if new upstream release)
+        if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          NEW_TAG="${{ steps.upstream.outputs.tag }}"
+          RELEASE_NAME="${{ steps.upstream.outputs.name }}"
+          RELEASE_BODY_B64="${{ steps.upstream.outputs.body_b64 }}"
+          RELEASE_BODY=$(echo "$RELEASE_BODY_B64" | base64 -d)
+          # create release (POST to GitHub API)
+          api_url="https://api.github.com/repos/${{ github.repository }}/releases"
+          payload=$(jq -n --arg tag "$NEW_TAG" --arg name "$RELEASE_NAME" --arg body "$RELEASE_BODY" \
+            '{ tag_name: $tag, name: $name, body: $body, draft: false, prerelease: false }')
+          echo "Creating release $NEW_TAG in $GITHUB_REPOSITORY"
+          curl -s -o /tmp/release_resp.json -w "%{http_code}" -X POST -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            "$api_url" -d "$payload" | tee /tmp/release_http_code.txt
+          code=$(cat /tmp/release_http_code.txt)
+          if [ "$code" -ge 200 ] && [ "$code" -lt 300 ]; then
+            echo "Release created successfully."
+          else
+            echo "Failed to create release. HTTP code: $code"
+            echo "Response:"
+            cat /tmp/release_resp.json
+            exit 3
+          fi
