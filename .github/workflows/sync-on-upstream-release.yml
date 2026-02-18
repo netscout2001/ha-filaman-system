@@ -56,7 +56,7 @@ jobs:
           echo "upstream tag: ${{ steps.upstream.outputs.tag }}"
           echo "last synced : ${{ steps.readlast.outputs.last }}"
 
-            - name: "Prepare repo changes (only if new upstream release)"
+      - name: "Prepare repo changes (only if new upstream release)"
         if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
         run: |
           set -euo pipefail
