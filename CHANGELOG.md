@@ -1,3 +1,44 @@
+## [0.1.19-0] - 2026-02-18
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.19`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: verbessere Versionsermittlung durch automatische Patch-Erhöhung (Manuel Weiser, ce3539b)
+- feat: füge Unterstützung für das Projekt in die Navigation und das Layout hinzu (Manuel Weiser, 52ed349)
+- feat: verbessere Sidebar-Layout und füge Einstellungen-Button hinzu (Manuel Weiser, 7f1ab8b)
+- feat: erweitere Spulenansicht um Status- und Standortinformationen (Manuel Weiser, 81332be)
+- feat: füge Funktion zum Löschen von Benutzern hinzu und implementiere Sicherheitsprüfungen (Manuel Weiser, 2c901d4)
+- feat: füge "Buy Me A Coffee"-Button im Sidebar-Footer hinzu und verbessere das Layout der Benutzerprofilzeile (Manuel Weiser, 2d34e58)
+- feat: füge Unterstützung für Spool-Status hinzu und schließe archivierte Spulen standardmäßig aus (Manuel Weiser, bb57b62)
+- feat: implement bulk status change for spools and add corresponding UI elements (Manuel Weiser, cabf599)
+- feat: füge benutzerdefinierte Checkbox-Stile hinzu und verbessere das Layout der Filteroptionen (Manuel Weiser, 0d26907)
+- feat: verbessere Styling der Select-Elemente mit zusätzlichem Padding und Icons (Manuel Weiser, 55cdaf5)
+- feat: verbessere Dashboard-Layout mit Hover-Effekten und aktualisierten Karten für Spulen und Filamente (Manuel Weiser, f02f779)
+- feat: implement color management page with CRUD functionality and usage tracking (Manuel Weiser, f7f61d8)
+- feat: implement RFID tag writing functionality with status updates and error handling (Manuel Weiser, f78b9e1)
+- feat: füge Bestätigungsnachricht in die Übersetzungen für Deutsch und Englisch hinzu (Manuel Weiser, da07ef1)
+- feat: add RFID tag writing functionality to locations and spools pages (Manuel Weiser, 2c5d18b)
+- feat: implement device registration and management features (Manuel Weiser, 24f69b5)
+
+### Fixes
+- fix: optimiere Versionsermittlung im CI-Workflow zur Verwendung von version.txt (Manuel Weiser, 0d26323)
+- fix: verbessere Passwortfeld im Benutzerformular mit Autocomplete-Attribut (Manuel Weiser, 2a4830f)
+- fix: erweitere _fetch_all-Methode um zusätzliche Parameter und verbessere Duplikatprüfungen für Locations, Manufacturers und Spools (Manuel Weiser, 42a251b)
+- fix: füge neue Routen für die Anzeige von Filament- und Spool-Seiten hinzu (Manuel Weiser, 28ba793)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.14...v0.1.19
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.19)
+
 ## [0.1.16-0] - 2026-02-18
 
 ## Artefakte
