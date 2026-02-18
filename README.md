@@ -9,7 +9,7 @@ If you want to do add it manually, use the following URL to add this repository:
 ```
 https://github.com/netscout2001/ha-filaman-system
 ```
-1. [Add the repository][repository] to your Home Assistant add-ons.  
+1. Add the repositoryto your Home Assistant add-ons.  
 2. Install the **Filaman System** add-on.  
 3. Start the add-on.  
 4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`.
