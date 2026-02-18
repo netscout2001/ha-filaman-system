@@ -1,3 +1,26 @@
+## [0.1.15-0] - 2026-02-18
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.15`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: implement device registration and management features (Manuel Weiser, 24f69b5)
+
+### Fixes
+- fix: füge neue Routen für die Anzeige von Filament- und Spool-Seiten hinzu (Manuel Weiser, 28ba793)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.14...v0.1.15
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.15)
+
 ## [0.1.14-0] - 2026-02-18
 
 ## Artefakte
