@@ -56,7 +56,7 @@ jobs:
           echo "upstream tag: ${{ steps.upstream.outputs.tag }}"
           echo "last synced : ${{ steps.readlast.outputs.last }}"
 
-      - name: "Prepare repo changes (only if new upstream release)"
+            - name: "Prepare repo changes (only if new upstream release)"
         if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
         run: |
           set -euo pipefail
@@ -67,6 +67,7 @@ jobs:
           RELEASE_BODY=$(printf '%s' "$RELEASE_BODY_B64" | base64 -d)
           RELEASE_LINK="${{ steps.upstream.outputs.html_url }}"
           TODAY=$(date --utc +%Y-%m-%d)
+          TODAY_BADGE=$(date --utc +%Y--%m--%d)   # format used in your badge (2026--02--17)
 
           echo "Updating files for upstream tag $NEW_TAG"
 
@@ -78,17 +79,35 @@ jobs:
           printf "## %s — %s\n\n%s\n\n(Upstream release: %s)\n\n" "$NEW_TAG" "$TODAY" "$RELEASE_BODY" "$RELEASE_LINK" > /tmp/new_changelog_entry.md
           cat /tmp/new_changelog_entry.md CHANGELOG.md > /tmp/CHANGELOG.new && mv /tmp/CHANGELOG.new CHANGELOG.md
 
-          # 2) Update Dockerfile — replace upstream image tag
+          # 2) Update Dockerfile — replace upstream image tag (case-insensitive-ish)
           if [ -f Dockerfile ]; then
-            # adjust upstream image name to match actual reference in your Dockerfile (case-sensitive)
-            UPSTREAM_IMAGE="ghcr.io/Fire-Devils/filaman-system"
-            sed -E -i.bak "s#(${UPSTREAM_IMAGE})(:[^[:space:]\"]+)?#\1:${NEW_TAG}#g" Dockerfile || true
+            # replace both capitalizations (Fire-Devils / fire-devils)
+            sed -E -i.bak "s#(ghcr\.io/[Ff]ire-Devils/filaman-system)(:[^[:space:]\"]+)?#\1:${NEW_TAG}#g" Dockerfile || true
+            # also handle docker.io variant if present
+            sed -E -i.bak "s#(docker\.io/[Ff]ire-Devils/filaman-system)(:[^[:space:]\"]+)?#\1:${NEW_TAG}#g" Dockerfile || true
             rm -f Dockerfile.bak || true
           else
             echo "WARNING: Dockerfile not found in repo root; skipping Dockerfile update"
           fi
 
-          # 3) Update config.yaml — replace version line (append -0 if you wanted suffix)
+          # 2b) If Dockerfile contains commented 'latest' line, optionally update that too
+          # (the sed above will also touch commented FROM lines)
+
+          # 3) Update README badges (version & updated date)
+          if [ -f README.md ]; then
+            # Update version badge line for [Filaman-System-version-shield]
+            # Result: https://img.shields.io/badge/version-vX.Y.Z--0-blue.svg
+            sed -E -i.bak "s#(\[Filaman-System-version-shield\]:[[:space:]]*)https?://[^[:space:]]*#\1https://img.shields.io/badge/version-${NEW_TAG}--0-blue.svg#g" README.md || true
+
+            # Update update-date badge line for [Filaman-System-update-shield]
+            sed -E -i.bak "s#(\[Filaman-System-update-shield\]:[[:space:]]*)https?://[^[:space:]]*#\1https://img.shields.io/badge/Updated%20on-${TODAY_BADGE}-blue.svg#g" README.md || true
+
+            rm -f README.md.bak || true
+          else
+            echo "WARNING: README.md not found; skipping badge updates"
+          fi
+
+          # 4) Update config.yaml — replace version line (append -0 if desired)
           if [ -f config.yaml ]; then
             if grep -qE '^version:' config.yaml; then
               sed -E -i.bak "s/^version:.*$/version: \"${NEW_TAG}-0\"/" config.yaml || true
@@ -100,13 +119,13 @@ jobs:
             printf "version: \"%s-0\"\n" "$NEW_TAG" > config.yaml
           fi
 
-          # 4) record last tag to avoid repeated runs
+          # 5) record last tag to avoid repeated runs
           printf "%s" "$NEW_TAG" > .last_upstream_release_tag
 
-          # 5) commit & push changes
+          # 6) commit & push changes
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add CHANGELOG.md Dockerfile config.yaml .last_upstream_release_tag || true
+          git add CHANGELOG.md Dockerfile README.md config.yaml .last_upstream_release_tag || true
           git commit -m "chore: sync from upstream release ${NEW_TAG}" || (echo "No changes to commit" && exit 1)
           git push origin HEAD:main
 
