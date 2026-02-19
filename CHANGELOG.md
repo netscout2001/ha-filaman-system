@@ -1,3 +1,26 @@
+## [0.1.20-0] - 2026-02-19
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.20`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: verbessere Sidebar-Layout und -Stile für bessere Benutzererfahrung (Manuel Weiser, c9251fa)
+- feat: implement sidebar collapse functionality and styles (Manuel Weiser, a193b87)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.19...v0.1.20
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.20)
+
 ## [0.1.19-0] - 2026-02-18
 
 ## Artefakte
