@@ -45,7 +45,7 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 ## Screenshot
 
 ![Preview][preview]
-[preview2]
+![Preview][preview2]
 
 <!--
 Assets
