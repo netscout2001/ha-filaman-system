@@ -1,3 +1,25 @@
+## [0.1.23-0] - 2026-02-20
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.23`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: füge neue Endpunkte für das Bearbeiten von Spulen und das Abrufen von Filamentfarben hinzu (Manuel Weiser, 95494da)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.22...v0.1.23
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.23)
+
 ## [0.1.22-0] - 2026-02-20
 
 ## Artefakte
