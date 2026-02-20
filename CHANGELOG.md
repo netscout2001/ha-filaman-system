@@ -1,3 +1,25 @@
+## [0.1.22-0] - 2026-02-20
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.22`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: füge Fortschrittsanzeige für RFID-Schreibvorgänge hinzu und verbessere das Styling (Manuel Weiser, d6ee6b7)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.21...v0.1.22
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.22)
+
 ## [0.1.20-0] - 2026-02-19
 
 ## Artefakte
