@@ -1,3 +1,24 @@
+## [0.1.25-0] - 2026-02-21
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.25`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.24...v0.1.25
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.25)
+
 ## [0.1.24-0] - 2026-02-21
 
 ## Artefakte
