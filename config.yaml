@@ -1,5 +1,5 @@
 name: "FilaMan System"
-version: "v0.1.23-0"
+version: "v0.1.24-0"
 slug: filaman_system_app
 description: "A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support."
 url: https://github.com/netscout2001/ha-filaman-system

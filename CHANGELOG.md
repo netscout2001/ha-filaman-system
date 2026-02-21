@@ -1,3 +1,42 @@
+## [0.1.24-0] - 2026-02-21
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.1.24`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: implement cascade delete functionality for filaments and manufacturers with confirmation prompts (Manuel Weiser, b6acf94)
+- feat: füge umfassende API-Dokumentation hinzu (Manuel Weiser, 85bc336)
+- feat: aktualisiere die Bezeichnung für die Kennung auf "RFID UID" in den Sprachdateien (Manuel Weiser, d09e30e)
+- feat: füge Unterstützung für den Zustand der Sidebar hinzu und optimiere das Styling (Manuel Weiser, 71d2a45)
+- feat: optimiere AuthMiddleware und füge GZip- sowie Cache-Control-Middleware hinzu (Manuel Weiser, 20c3173)
+- feat: füge Unterstützung für die Speicherung des Status der Seitenleiste hinzu (Manuel Weiser, 86ac5d1)
+
+### Fixes
+- fix: korrigiere den DATABASE_URL-Pfad in der .env.example und füge Recycling Fabrik Informationen in die README-Dateien hinzu (Manuel Weiser, 1534930)
+- fix: füge Indizes zur Leistungsverbesserung in der Datenbank hinzu (Manuel Weiser, ddf0e59)
+- fix: optimiere Dashboard-Statistiken mit asynchroner Abfrage und verbessere Hersteller- und Filamentabfragen (Manuel Weiser, d41ae3c)
+- fix: füge klickbare IP-Adressen-Links in der Geräteübersicht hinzu (Manuel Weiser, 848859b)
+- fix: füge IDs zu Rücklinks hinzu und aktualisiere sie dynamisch in den Editoren für Filamente und Spulen (Manuel Weiser, 97e7ee6)
+- fix: aktualisiere Navigation für Detailansichten von Filamenten, Druckern und Spulen (Manuel Weiser, 0635627)
+- fix: entferne die Version aus der Docker-Compose-Datei (Manuel Weiser, ec62c8f)
+- fix: füge Platzhalter-Routen für Spulen- und Filamentdetails hinzu (Manuel Weiser, c732f77)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+- docs: passe das Bildformat im README für die "Buy Me A Coffee"-Schaltfläche an (Manuel Weiser, 9c538ab)
+- docs: passe das Bildformat im README für die "Buy Me A Coffee"-Schaltfläche an (Manuel Weiser, 964abfc)
+- docs: aktualisiere README mit neuen Informationen zur Recycling Fabrik und passe das Bildformat an (Manuel Weiser, 9539236)
+- docs: aktualisiere README mit neuen Informationen zu Hardware-Erweiterungen und Home Assistant Integration (Manuel Weiser, ef0671b)
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.23...v0.1.24
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.1.24)
+
 ## [0.1.23-0] - 2026-02-20
 
 ## Artefakte
