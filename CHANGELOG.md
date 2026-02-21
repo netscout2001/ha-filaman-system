@@ -1,3 +1,38 @@
+## [0.2.2-0] - 2026-02-21
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.2.2`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: füge RFID-Modul hinzu und implementiere Schreibfunktionalität für RFID-Tags (Manuel Weiser, 13e8266)
+- feat: füge Unterstützung für RFID-Ergebnisrückmeldungen hinzu und aktualisiere das Gewicht der Spule (Manuel Weiser, c93d43d)
+- feat: verbessere die Handhabung von UUIDs für Spulen und Standorte in der API (Manuel Weiser, 0e91996)
+- feat: füge apple-touch-icon zur Layout-Datei hinzu (Manuel Weiser, a90ddb3)
+
+### Fixes
+- fix: aktualisiere Versionsnummer auf 0.2.0 (Manuel Weiser, fbd807b)
+- fix: verbessere Duplikatprüfung und bereinige nur aktive Spulen, ignoriere archivierte/löschte Spulen (Manuel Weiser, afaf8ff)
+- fix: gruppiere Filamente nach Hersteller und sortiere sie alphabetisch (Manuel Weiser, 00083a8)
+- fix: set default empty spool weight to 250g if not provided (Manuel Weiser, afc7613)
+- fix: normalize UUID for case-insensitive spool identification (Manuel Weiser, 64fa7a7)
+- fix: verbessere RFID-Tag-Verarbeitung zur Unterstützung von Spool- und Standortzuweisungen (Manuel Weiser, 20d4333)
+- fix: aktualisiere SVG-Icon für bessere Darstellung und Interaktivität (Manuel Weiser, 36d0733)
+- fix: ersetze RFID-Bild durch SVG für bessere Skalierbarkeit und Darstellung (Manuel Weiser, adb7a0f)
+- fix: aktualisiere RFID-Icons für verbesserte Sichtbarkeit und Interaktivität (Manuel Weiser, 2919a19)
+- fix: aktualisiere RFID-Buttons für bessere Darstellung und Interaktivität (Manuel Weiser, 6df9ea1)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.1.25...v0.2.2
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.2.2)
+
 ## [0.1.25-0] - 2026-02-21
 
 ## Artefakte
