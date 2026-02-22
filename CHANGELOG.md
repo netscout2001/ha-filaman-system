@@ -1,3 +1,66 @@
+## [0.3.2-0] - 2026-02-22
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.2`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: entferne die Spalte expiration_date aus der Spool-Tabelle und aktualisiere die entsprechenden Schemas und Ansichten (Manuel Weiser, 32f05b8)
+- feat: entferne die Spalte deleted_at aus der Spool-Tabelle und aktualisiere die Abfragen zur Berücksichtigung archivierter Spulen (Manuel Weiser, b622946)
+- feat: füge Unterstützung für archivierte Spulen in der Spulenliste hinzu (Manuel Weiser, 1e34321)
+- feat: füge permanente Löschfunktion für Spulen hinzu und aktualisiere das Löschen-Modal (Manuel Weiser, 24b2fe6)
+- feat: verbessere das Layout und die Benutzeroberfläche der Druckseite mit neuen Stilen und Einstellungen (Manuel Weiser, c440a48)
+- feat: füge Drucklabel-URL-Generierung und Parameterverarbeitung hinzu (Manuel Weiser, 8cc1845)
+- feat: füge Druckeinstellungen und Label-Vorschau hinzu (Manuel Weiser, 124b6d2)
+- feat: füge Drucklabel-Funktionalität mit Modal hinzu (Manuel Weiser, 3dcfaa9)
+- feat: lade Beziehungen für Spulen beim Erstellen und Aktualisieren nach (Manuel Weiser, fdb9ad4)
+- feat: add QR code generation and print label functionality (Manuel Weiser, 80c75f6)
+- feat: verbessere Anzeige für niedrige und leere Spulen im Dashboard (Manuel Weiser, 2b04ba0)
+- feat: füge Gesamtwert verfügbarer Spulen zur Dashboard-Statistik hinzu fix: aktualisiere die Anzeige für niedrige und leere Spulen (Manuel Weiser, 2139905)
+- feat: erweitere Herstellerinformationen um archivierte Spulen und Preisstatistiken (Manuel Weiser, 7400999)
+- feat: füge Preiszusammenfassung hinzu und entferne doppelte Preisabschnitte (Manuel Weiser, b06dffa)
+- feat: füge Preiszusammenfassung hinzu und aktualisiere Spulenabfrage zur Unterstützung archivierter Spulen (Manuel Weiser, 4858cd1)
+- feat: füge Preisverlauf-Sektion hinzu und implementiere Diagramm zur Preisdarstellung (Manuel Weiser, 076b3ea)
+- feat: add cascading spool properties and update related models, schemas, and UI (Manuel Weiser, adceafa)
+- feat: füge Unterstützung für System- und Extrafelder hinzu, einschließlich Übersetzungen und Anpassungen in den Admin-Seiten (Manuel Weiser, 0a399fd)
+- feat: füge Unterstützung für system_extra_fields hinzu, einschließlich API-Routen, Datenbankmodelle und Frontend-Integration (Manuel Weiser, d9058ae)
+
+### Fixes
+- fix: entferne overflow von fm-card und aktiviere horizontalen Scroll für Tabellen auf mobilen Geräten (Manuel Weiser, 5d4b629)
+- fix: aktualisiere das Layout des Spulenbearbeitungsformulars und verbessere die Struktur der Eingabefelder (Manuel Weiser, 8151f5a)
+- fix: füge externen ID-Eingabefeld zum Erstellen von Spulen hinzu und aktualisiere das Layout (Manuel Weiser, e297caa)
+- fix: archiviere Spule durch Aktualisierung des Status auf "archiviert" (Manuel Weiser, f0bcc4e)
+- fix: aktualisiere den Stil des RFID-Buttons für bessere Benutzererfahrung (Manuel Weiser, 840f90b)
+- fix: entferne benutzerdefinierte Felder und zugehörige Logik aus der Spool-Seite (Manuel Weiser, ab87c57)
+- fix: verbessere Druckansicht und Farbgebung für Labelvorschau (Manuel Weiser, c81f47a)
+- fix: update import paths for Layout and i18n module in edit, index, and print pages (Manuel Weiser, 4cd6c34)
+- fix: update import path for i18n module in print.astro (Manuel Weiser, 30cefc8)
+- fix: verbessere Druckansicht für das Labelmodal (Manuel Weiser, 927cf55)
+- fix: set script tags to inline for improved performance (Manuel Weiser, 7876cc4)
+- fix: aktualisiere Hinweise für Statusanzeigen im Dashboard (Manuel Weiser, bb19f57)
+- fix: aktualisiere Farbschema für Warnanzeigen im Dashboard (Manuel Weiser, 2587dda)
+- fix: füge Index für gelöschte Spulen hinzu und aktualisiere Herstelleransicht (Manuel Weiser, 5fb28b0)
+- fix: füge Eingabefeld für Kaufpreis hinzu und aktualisiere die Logik zur Preisverarbeitung (Manuel Weiser, c075f46)
+- fix: aktualisiere Autofill-Funktion für Spulen- und Filamentformulare mit Herstellerstandards (Manuel Weiser, 509fd3d)
+- fix: entferne doppelte Einträge für Spool-Standardwerte in den Übersetzungsdateien (Manuel Weiser, c4543c7)
+- fix: füge Unterstützung für Spool-Standardwerte hinzu und verbessere die Eingabefelder in den Formularen (Manuel Weiser, 7b0b851)
+- fix: füge Standardwerte für neue Hersteller im Formular hinzu und verbessere das Layout der Eingabefelder (Manuel Weiser, 80fe456)
+- fix: entferne nicht verwendete Spulendimensionen im Bearbeitungsformular (Manuel Weiser, c044743)
+- fix: verbessere Benutzerprofilanzeige durch Anpassung der CSS-Stile für bessere Sichtbarkeit (Manuel Weiser, 7df90ff)
+- fix: aktualisiere Versionsnummer auf leer und verbessere Benutzerprofilanzeige (Manuel Weiser, db7fe85)
+
+### Chore/Refactor/Deps
+- chore: aktualisiere die Versionsnummer auf 0.3.0 (Manuel Weiser, f31d07e)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.2.2...v0.3.2
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.2)
+
 ## [0.2.2-0] - 2026-02-21
 
 ## Artefakte
