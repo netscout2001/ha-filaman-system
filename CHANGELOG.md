@@ -1,3 +1,28 @@
+## [0.3.4-0] - 2026-02-23
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.4`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: füge Links zu den Icons in der Fußzeile hinzu (Manuel Weiser, 60de17a)
+
+### Fixes
+- fix: entferne nicht mehr benötigte Favicon-Dateien (Manuel Weiser, a9d971b)
+- fix: aktualisiere .gitignore, um _layout durch _* zu ersetzen (Manuel Weiser, b493680)
+- fix: füge _layout und local_cache zur .gitignore hinzu (Manuel Weiser, 3d8c032)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.3.3...v0.3.4
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.4)
+
 ## [0.3.3-0] - 2026-02-23
 
 ## Artefakte
