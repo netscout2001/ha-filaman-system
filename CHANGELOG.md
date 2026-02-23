@@ -1,3 +1,25 @@
+## [0.3.6-0] - 2026-02-23
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.6`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add location selection to spool edit form and update layout spacing (Manuel Weiser, 729c6ef)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.3.5...v0.3.6
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.6)
+
 ## [0.3.5-0] - 2026-02-23
 
 ## Artefakte
