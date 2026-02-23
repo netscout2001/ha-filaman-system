@@ -1,3 +1,27 @@
+## [0.3.3-0] - 2026-02-23
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.3`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: aktualisiere die Abfrage für Spool-Status, um archivierte Spools auszuschließen (Manuel Weiser, 6273e78)
+- fix: aktualisiere die Verwendung von json_extract auf json_extract_cast_string für Spoolman-ID in der Datenbankabfrage (Manuel Weiser, ff77fd6)
+- fix: aktualisiere die Verwendung von json_extract auf cast für Spoolman-ID in der Datenbankabfrage (Manuel Weiser, 5fd0a61)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.3.2...v0.3.3
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.3)
+
 ## [0.3.2-0] - 2026-02-22
 
 ## Artefakte
