@@ -1,3 +1,26 @@
+## [0.3.7-0] - 2026-02-24
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.7`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: update 'type' to 'material_type' in filament edit form submission (Manuel Weiser, f2b87c4)
+- fix: update 'type' to 'material_type' in new filament form submission (Manuel Weiser, 3bb50f3)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/3D-Druck/Filaman-System/compare/v0.3.6...v0.3.7
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.7)
+
 ## [0.3.6-0] - 2026-02-23
 
 ## Artefakte
