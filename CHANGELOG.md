@@ -1,3 +1,27 @@
+## [0.3.9-0] - 2026-02-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.9`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add plugin update functionality with UI updates and localization (Manuel Weiser, 4573414)
+- feat: add documentation section with link to full user manual (Manuel Weiser, 680d9a0)
+- feat: implement user-installed plugins directory resolution and update plugin path handling (Manuel Weiser, 7132777)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v0.3.8...v0.3.9
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.9)
+
 ## [0.3.8-0] - 2026-02-27
 
 ## Artefakte
