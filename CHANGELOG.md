@@ -1,3 +1,28 @@
+## [0.3.11-0] - 2026-02-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.11`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update plugin installation commands to use the current Python executable (Manuel Weiser, a365f7e)
+- feat: update changelog versioning and enhance changelog display logic (Manuel Weiser, 07a11ff)
+- feat: enhance changelog modal with detailed logging for better debugging (Manuel Weiser, c3519dc)
+- feat: implement changelog modal to display updates per version (Manuel Weiser, c211bb1)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v0.3.10...v0.3.11
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.11)
+
 ## [0.3.10-0] - 2026-02-27
 
 ## Artefakte
