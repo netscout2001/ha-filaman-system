@@ -1,3 +1,69 @@
+## [0.3.8-0] - 2026-02-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.8`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update spool card background color based on filament hex code (Manuel Weiser, 7f2279a)
+- feat: implement bulk creation of spools with quantity handling and UI updates (Manuel Weiser, a525da9)
+- feat: add duplicate functionality for filaments and spools, including UI updates and session storage handling (Manuel Weiser, 8fd0081)
+- feat: add .opencode to .gitignore for improved file management (Manuel Weiser, 6b8ebc9)
+- feat: enhance spool display with filament color indicators and details (Manuel Weiser, 34f3e27)
+- feat: update slot button styles and add presence check for color display (Manuel Weiser, fc46652)
+- feat: change logging level for auto-assign checks in weigh_spool function to debug (Manuel Weiser, 4d35e53)
+- feat: optimize weigh_spool function to cache filament data and improve auto-assign logging (Manuel Weiser, b73f4e6)
+- feat: add auto-assign functionality for devices with corresponding UI and API updates (Manuel Weiser, 7edbf51)
+- feat: implement SSE event bus and streaming endpoint for real-time updates (Manuel Weiser, 055a51d)
+- feat: enhance spool model to include filament colors and improve debug logging functionality (Manuel Weiser, fc947dd)
+- feat: remove unused getStaticPaths function from filament, spool, and printer pages (Manuel Weiser, c61ad02)
+- feat: add copy button for topic entry in printer logs and adjust styling (Manuel Weiser, 10551e2)
+- feat: add success alert functionality and corresponding translations for success messages (Manuel Weiser, cb0afc0)
+- feat: add SVG icons for spool and printer actions, enhance context menu functionality (Manuel Weiser, 6b18992)
+- feat: improve styling for external tray and AMS slots, enhance empty slot representation (Manuel Weiser, d0acdf3)
+- feat: add printer slots display and load printer slot overview functionality (Manuel Weiser, ba6bc3a)
+- feat: implement reconnect functionality for all active printers and update UI messages (Manuel Weiser, 588db5e)
+- feat: add inherited filament parameters handling and update UI to reflect inherited values (Manuel Weiser, 70919fd)
+- feat: add setting ID and calibration index to printer slot assignment response and enhance UI display (Manuel Weiser, f20c409)
+- feat: enhance printer details with additional tray information and nozzle temperature display (Manuel Weiser, 971997c)
+- feat: add printer parameter management with import/export functionality and enhance UI localization (Manuel Weiser, d4d1a3e)
+- feat: implement printer parameter import/export and enhance confirmation modal with checkbox (Manuel Weiser, 98c8403)
+- feat: update bambu nozzle temperature handling and clean up legacy fields (Manuel Weiser, b972069)
+- feat: add source filtering to system extra fields and enhance printer parameter handling (Manuel Weiser, 24096e1)
+- feat: Enhance System Extra Fields and Plugin Management (Manuel Weiser, e2b0092)
+- feat: add healthcheck configuration for Docker services (Manuel Weiser, c61c450)
+- feat: enhance printer slot management with detailed assignment info and UI updates (Manuel Weiser, b654e91)
+- feat: add "Check All Printers" button and functionality to printer management (Manuel Weiser, 91e2609)
+- feat: implement plugin installation from registry and add update check functionality (Manuel Weiser, 118a174)
+- feat: add SVG icons for moisture, slots, and temperature; update printer details layout (Manuel Weiser, 849bd08)
+- feat: implement slot summary rendering as tag cards in printer details (Manuel Weiser, 5847b8e)
+- feat: optimize slot update handling and persist AMS/slot summary in Printer.custom_fields (Manuel Weiser, 7db2033)
+- feat: add custom fields to PrinterResponse and persist AMS/slot summary in PluginManager (Manuel Weiser, 53e508e)
+- feat: add AMS units display and slot information to printer details (Manuel Weiser, f791e62)
+- feat: add online status badge for printers and enhance loading messages (Manuel Weiser, e95f026)
+- feat: implement driver start/stop functionality and update UI with corresponding buttons (Manuel Weiser, e099a77)
+- feat: implement driver health and debug log endpoints, enhance printer UI with connection status and debug console (Manuel Weiser, 889ea60)
+- feat: add plugin capabilities and enhance printer driver actions (Manuel Weiser, 691cfc3)
+
+### Fixes
+- fix: add getStaticPaths function to filaments and printers pages for dynamic routing (Manuel Weiser, 5af88bc)
+- fix: printer bamu settings (Manuel Weiser, 5b18c61)
+- fix: update .dockerignore to include additional plugin files for inclusion (Manuel Weiser, fc62a40)
+- fix: update full diff link in release notes generation (Manuel Weiser, 594ae8f)
+
+### Chore/Refactor/Deps
+- refactor: remove AMS-related fields and update printer model (Manuel Weiser, 39ab78b)
+- refactor: remove AMS unit related code and references across the application (Manuel Weiser, 70bab37)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v0.3.7...v0.3.8
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.8)
+
 ## [0.3.7-0] - 2026-02-24
 
 ## Artefakte
