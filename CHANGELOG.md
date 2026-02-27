@@ -1,3 +1,31 @@
+## [0.3.10-0] - 2026-02-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v0.3.10`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update grid layout for system version section to use auto-fill for better responsiveness (Manuel Weiser, 9bd6621)
+- feat: add plugin dependency management to ensure all user-installed plugins have required packages (Manuel Weiser, 8bf082c)
+- feat: refactor system version info layout and update changelog button placement (Manuel Weiser, cdd1f88)
+- feat: rename changelog close functions for clarity and consistency (Manuel Weiser, 047b5a3)
+- feat: add version 0.3.10 with new changelog popup and automatic update checks (Manuel Weiser, c905faf)
+- feat: improve plugin management and enhance changelog with new features and fixes (Manuel Weiser, 7cc687a)
+- feat: implement version check and changelog display in admin panel (Manuel Weiser, 048d54f)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v0.3.9...v0.3.10
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v0.3.10)
+
 ## [0.3.9-0] - 2026-02-27
 
 ## Artefakte
