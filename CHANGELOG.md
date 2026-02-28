@@ -1,3 +1,28 @@
+## [1.0.6-0] - 2026-02-28
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.6`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Add OIDC_ENC_KEY to environment configuration for optional OIDC SSO support (Manuel Weiser, a544d74)
+- feat: Update version handling in CI workflow to streamline version reading and changelog stamping (Manuel Weiser, 5e0fc44)
+- feat: .gitignore (Manuel Weiser, 414e753)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.6 (gitea-actions, a23a221)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.4...v1.0.6
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.6)
+
 ## [1.0.4-0] - 2026-02-28
 
 ## Artefakte
