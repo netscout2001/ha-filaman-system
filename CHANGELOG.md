@@ -1,3 +1,31 @@
+## [1.0.4-0] - 2026-02-28
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.4`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Implement bulk update and delete functionalities for filaments (Manuel Weiser, f5c84de)
+- feat: Add grouping by manufacturer and update filament overview layout (Manuel Weiser, 35e384c)
+- feat: Implement bulk actions for spools including update and delete functionalities (Manuel Weiser, 1cd6f35)
+- feat: Add unreleased changes for killswitch functionality and sort settings preservation (Manuel Weiser, d6fa20b)
+- feat: Enhance killswitch functionality with error handling and session expiration checks (Manuel Weiser, 2bbf930)
+- feat: Implement localStorage for sorting state in filaments and spools pages (Manuel Weiser, 2cfc4ff)
+
+### Fixes
+- fix: Improve purchase price retrieval in SpoolmanImportService (Manuel Weiser, 0a61e7a)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.2...v1.0.4
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.4)
+
 ## [1.0.2-0] - 2026-02-27
 
 ## Artefakte

@@ -1,4 +1,4 @@
 # Actual Release
-FROM ghcr.io/fire-devils/filaman-system:v1.0.2
+FROM ghcr.io/fire-devils/filaman-system:v1.0.4
 
 RUN ln -s /data /app/data
