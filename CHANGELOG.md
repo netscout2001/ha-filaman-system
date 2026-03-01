@@ -1,3 +1,46 @@
+## [1.0.7-0] - 2026-03-01
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.7`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Füge Zeitzonenunterstützung für alle DateTime-Spalten hinzu und aktualisiere die Verwendung von datetime.utcnow() auf datetime.now(timezone.utc) (Manuel Weiser, 8920d37)
+- feat: Dynamisch Mounten von Plugin-Routern bei Installation ohne Server-Neustart (Manuel Weiser, 7afb346)
+- feat: Implement dynamic mounting of plugin routers and pages (Manuel Weiser, d29ecc6)
+- feat: Implement pagination and restore current page for filaments, manufacturers, and spools (Manuel Weiser, 410084d)
+- feat: Add new feature for color circles in filament dropdown when creating new spools (Manuel Weiser, a2e8c5e)
+- feat: Implement custom filament dropdown for improved selection experience (Manuel Weiser, f2f5090)
+- feat: Improve cache control headers for static assets and HTML pages (Manuel Weiser, 67e7582)
+
+### Fixes
+- fix: Alte Routen von Plugins bei Update/Reinstall entfernen, um Überschneidungen zu vermeiden (Manuel Weiser, a27170a)
+- fix: Stelle sicher, dass der Catch-all StaticFiles-Mount am Ende der Route-Liste bleibt, um API-Routen nicht zu überschreiben (Manuel Weiser, 0921555)
+- fix: Verbessere dynamisches Mounten von Import-Plugin-Routern und verbessere Logging (Manuel Weiser, 62685a1)
+- fix: Refactor plugin page serving to dynamically resolve pages at request time (Manuel Weiser, afa93f7)
+- fix: Ensure PLUGINS_DIR is on sys.path for plugin imports and add proxy for /plugin-page (Manuel Weiser, 58fe5b0)
+- fix: Update dropdown options to display material names sorted alphabetically (Manuel Weiser, d11c808)
+- fix: Update options handling to ensure JSON-safe comparison and avoid deserialization mismatches (Manuel Weiser, 26c1ec2)
+- fix: Add logging for resolved options and changes in plugin field options (Manuel Weiser, ee131ec)
+- fix: Simplify sorting of plugin options by name (Manuel Weiser, c55aaa7)
+- fix: Improve sorting of plugin options by name (Manuel Weiser, aeee21a)
+- fix: Add missing entry for current page restoration in changelog (Manuel Weiser, 4a081af)
+- fix: Correct PostgreSQL JSON extraction method to use column.op("->>") for text retrieval (Manuel Weiser, fb87fb6)
+- fix: Update default values for boolean columns to use 'false' instead of '0' (Manuel Weiser, d888a7a)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.7 (gitea-actions, 9e0b388)
+- refactor: Simplify dialect handling in JSON extraction functions (Manuel Weiser, 7a545cd)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.6...v1.0.7
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.7)
+
 ## [1.0.6-0] - 2026-02-28
 
 ## Artefakte
