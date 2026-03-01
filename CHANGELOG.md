@@ -1,3 +1,26 @@
+## [1.0.8-0] - 2026-03-01
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.8`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Aktualisiere Plugin-Suche, um Plugins von filaman.app statt GitHub abzurufen (Manuel Weiser, ef44f65)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.8 (gitea-actions, 6adc13f)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.7...v1.0.8
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.8)
+
 ## [1.0.7-0] - 2026-03-01
 
 ## Artefakte
