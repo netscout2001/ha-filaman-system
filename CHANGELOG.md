@@ -1,3 +1,29 @@
+## [1.0.10-0] - 2026-03-01
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.10`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: add section to support the FilaMan project in README files (Manuel Weiser, 7aae6fd)
+- fix: update donation button in README files to ko-fi (Manuel Weiser, f499bbf)
+- fix: update changelog with new feature and fix descriptions for spool overview (Manuel Weiser, 4bb6213)
+- fix: implement fetchAllPages function for paginated API calls and update relevant components fix: add changelog entry for spool overview issue with over 200 filaments (Manuel Weiser, 3f17e96)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.10 (gitea-actions, de1880b)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.9...v1.0.10
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.10)
+
 ## [1.0.9-0] - 2026-03-01
 
 ## Artefakte
