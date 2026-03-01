@@ -1,3 +1,24 @@
+## [1.0.9-0] - 2026-03-01
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.9`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.8...v1.0.9
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.9)
+
 ## [1.0.8-0] - 2026-03-01
 
 ## Artefakte
