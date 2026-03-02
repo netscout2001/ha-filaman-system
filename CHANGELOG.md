@@ -1,3 +1,30 @@
+## [1.0.14-0] - 2026-03-02
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.14`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add SpoolmanAPI plugin with configurable IP-based access control and update changelog (Manuel Weiser, 81f1dfe)
+
+### Fixes
+- fix: erweitere Plugin-Router-Mounting für Import- und Integrations-Plugins (Manuel Weiser, c6133fb)
+- fix: add changelog entry for sorting issue in filament overview (Manuel Weiser, a9fbc2f)
+- fix: update changelog for filter state persistence and fix sorting issue (Manuel Weiser, 1cd7160)
+- fix: update changelog for filter state persistence and fix sorting issue (Manuel Weiser, 8261421)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.13 (gitea-actions, 6b522d3)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.12...v1.0.14
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.14)
+
 ## [1.0.12-0] - 2026-03-02
 
 ## Artefakte
