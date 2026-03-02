@@ -14,6 +14,7 @@ https://github.com/netscout2001/ha-filaman-system
 3. Start the add-on.  
 4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`.
 5. Login:
+
       Default Email: admin@example.com
       Default Password: admin123
 
