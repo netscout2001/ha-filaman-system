@@ -16,6 +16,7 @@ https://github.com/netscout2001/ha-filaman-system
 5. Login:
 
       Default Email: admin@example.com
+
       Default Password: admin123
 
 ### [FilaMan System - Filament Management System]
