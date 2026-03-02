@@ -1,3 +1,30 @@
+## [1.0.12-0] - 2026-03-02
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.12`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add changelog entry for saving filter selections in browser (Manuel Weiser, e0fb0b4)
+- feat: restore and save filter state for spools from localStorage (Manuel Weiser, b176981)
+- feat: update donation link to Ko-fi and adjust image source (Manuel Weiser, 3ecf510)
+- feat: add buymeacoffy image for donation support (Manuel Weiser, 3452208)
+
+### Fixes
+- fix: invalidate version cache after plugin installation/uninstallation (Manuel Weiser, d3fc62b)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.12 (gitea-actions, 676d93d)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.11...v1.0.12
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.12)
+
 ## [1.0.11-0] - 2026-03-01
 
 ## Artefakte
