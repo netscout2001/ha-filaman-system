@@ -15,10 +15,13 @@ https://github.com/netscout2001/ha-filaman-system
 4. Start the add-on.  
 5. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
 6. Login:
+   Default Email: admin@example.com
+   Default Password: admin123
 
-      Default Email: admin@example.com
-
-      Default Password: admin123
+## Features
+- HTTPS Support: Optional HTTPS support via nginx reverse proxy. SSL can be enabled or disabled via the add-on options.
+- Self-signed Certificate: If SSL is enabled and no certificate is found at the configured path, a self-signed certificate is automatically generated.
+- Let's Encrypt Support: Certificates managed by the Home Assistant Let's Encrypt add-on are supported via the /ssl/ volume mapping.
 
 ### [FilaMan System - Filament Management System]
 
@@ -27,11 +30,6 @@ https://github.com/netscout2001/ha-filaman-system
 
 A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support.
 This add-on is based on [FilaMan - Filament Management System](https://github.com/Fire-Devils/filaman-system).
-
-## Features
-- HTTPS Support: Optional HTTPS support via nginx reverse proxy. SSL can be enabled or disabled via the add-on options.
-- Self-signed Certificate: If SSL is enabled and no certificate is found at the configured path, a self-signed certificate is automatically generated.
-- Let's Encrypt Support: Certificates managed by the Home Assistant Let's Encrypt add-on are supported via the /ssl/ volume mapping.
 
 ## Notes
 1. **Version numbering**
