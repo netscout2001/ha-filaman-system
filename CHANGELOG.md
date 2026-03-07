@@ -1,3 +1,10 @@
+## [1.0.14-1] - 2026-03-07
+
+## Changes
+
+- SSL added to the Package
+- Updated RedMe
+
 ## [1.0.14-0] - 2026-03-02
 
 ## Artefakte
