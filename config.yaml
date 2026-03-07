@@ -8,6 +8,8 @@ arch:
   - aarch64
 startup: services
 init: false
+ingress: true
+ingress_port: 8000
 ports:
   8000/tcp: 8000
 ports_description:
