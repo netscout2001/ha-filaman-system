@@ -1,3 +1,9 @@
+## [1.0.14-2] - 2026-03-07
+
+## Changes
+
+- Bugfix HA Watchdog Check
+  
 ## [1.0.14-1] - 2026-03-07
 
 ## Changes
