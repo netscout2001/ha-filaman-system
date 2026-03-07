@@ -29,7 +29,8 @@ if [ "$SSL" = "true" ]; then
     fi
 
     # nginx config mit HTTPS
-    cat > /etc/nginx/sites-enabled/default << EOF
+    mkdir -p /etc/nginx/conf.d
+    cat > /etc/nginx/conf.d/default.conf << EOF
 server {
     listen 8000;
     return 301 https://\$host:8443\$request_uri;
@@ -74,6 +75,8 @@ server {
 EOF
 
 fi
+
+rm -f /etc/nginx/sites-enabled/default
 
 # nginx starten
 echo "Starting nginx..."
