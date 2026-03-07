@@ -1,3 +1,26 @@
+## [1.0.16-0] - 2026-03-07
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.16`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: korrigiere Versionsnummer in version.txt auf 1.0.14 (Manuel Weiser, cef01ad)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.16 (gitea-actions, 8dff2c7)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.15...v1.0.16
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.16)
+
 ## [1.0.14-2] - 2026-03-07
 
 ## Changes
