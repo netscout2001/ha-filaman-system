@@ -29,7 +29,7 @@ if [ "$SSL" = "true" ]; then
     fi
 
     # nginx config mit HTTPS
-    cat > /etc/nginx/http.d/default.conf << EOF
+    cat > /etc/nginx/sites-enabled/default << EOF
 server {
     listen 8000;
     return 301 https://\$host:8443\$request_uri;
