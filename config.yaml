@@ -8,10 +8,18 @@ arch:
   - aarch64
 startup: services
 init: false
-ingress: true
-ingress_port: 8000
 ports:
   8000/tcp: 8000
+  8443/tcp: 8443
+options:
+  ssl: false
+  certfile: fullchain.pem
+  keyfile: privkey.pem
+schema:
+  ssl: bool
+  certfile: str
+  keyfile: str
 ports_description:
   8000/tcp: "Web interface port. If another add-on uses this host port, HA will show an error."
+  8443/tcp: "Secure Web interface port. If another add-on uses this host port, HA will show an error."
 webui: "http://[HOST]:[PORT:8000]"
