@@ -10,10 +10,11 @@ If you want to do add it manually, use the following URL to add this repository:
 https://github.com/netscout2001/ha-filaman-system
 ```
 1. Add the repository to your Home Assistant add-ons.  
-2. Install the **Filaman System** add-on.  
-3. Start the add-on.  
-4. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`.
-5. Login:
+2. Install the **Filaman System** add-on.
+3. Configure if you want HTTP or HTTPS (use of your HomeAssistant Cert or it will generate a self signed)
+4. Start the add-on.  
+5. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
+6. Login:
 
       Default Email: admin@example.com
 
@@ -40,7 +41,7 @@ This add-on is based on [FilaMan - Filament Management System](https://github.co
 
 | Problem | Possible cause | Solution |
 |---------|----------------|----------|
-| **Add-on not starting** | Port 8000 already in use | Make sure no other add-on is using port 8000, or change the conflicting add-on port. |
+| **Add-on not starting** | Port 8000 or 8443 already in use | Make sure no other add-on is using port 8000, or change the conflicting add-on port. |
 
 ## Support
 - If you encounter any issues, please open an issue on the [Netscout2001/ha-filaman-system GitHub repository](https://github.com/netscout2001/ha-filaman-system/issues).  
