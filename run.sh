@@ -44,9 +44,11 @@ server {
 
     location / {
         proxy_pass         http://127.0.0.1:8001;
-        proxy_set_header   Host \$host;
+        proxy_set_header   Host \$http_host;
         proxy_set_header   X-Real-IP \$remote_addr;
+        proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header   X-Forwarded-Proto https;
+        proxy_set_header   X-Forwarded-Port 8443;
         proxy_http_version 1.1;
         proxy_set_header   Upgrade \$http_upgrade;
         proxy_set_header   Connection "upgrade";
@@ -55,13 +57,18 @@ server {
 EOF
 
 else
+
     cat > /etc/nginx/conf.d/default.conf << EOF
 server {
     listen 8000;
 
     location / {
         proxy_pass         http://127.0.0.1:8001;
-        proxy_set_header   Host \$host;
+        proxy_set_header   Host \$http_host;
+        proxy_set_header   X-Real-IP \$remote_addr;
+        proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto http;
+        proxy_set_header   X-Forwarded-Port 8000;
         proxy_http_version 1.1;
         proxy_set_header   Upgrade \$http_upgrade;
         proxy_set_header   Connection "upgrade";
@@ -75,4 +82,4 @@ echo "Starting nginx..."
 nginx
 
 echo "Starting FilaMan app..."
-exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001"
+exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*'"
