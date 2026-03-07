@@ -25,3 +25,4 @@ ports_description:
   8000/tcp: "Web interface port. If another add-on uses this host port, HA will show an error."
   8443/tcp: "Secure Web interface port. If another add-on uses this host port, HA will show an error."
 webui: "http://[HOST]:[PORT:8000]"
+watchdog: "http://[HOST]:[PORT:8000]/health"
