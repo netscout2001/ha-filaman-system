@@ -32,7 +32,16 @@ if [ "$SSL" = "true" ]; then
     cat > /etc/nginx/conf.d/default.conf << EOF
 server {
     listen 8000;
-    return 301 https://\$host:8443\$request_uri;
+
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
+    }
+
+    location / {
+        return 301 https://\$host:8443\$request_uri;
+    }
 }
 
 server {
@@ -41,6 +50,12 @@ server {
     ssl_certificate_key ${KEY_PATH};
     ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
+    }
 
     location / {
         proxy_pass         http://127.0.0.1:8001;
@@ -61,6 +76,12 @@ else
     cat > /etc/nginx/conf.d/default.conf << EOF
 server {
     listen 8000;
+
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
+    }
 
     location / {
         proxy_pass         http://127.0.0.1:8001;
