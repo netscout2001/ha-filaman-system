@@ -1,3 +1,36 @@
+## [1.0.19-0] - 2026-03-09
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.19`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(app-settings): implement admin settings for login control and add public access (Manuel Weiser, 47a2180)
+- feat(docker): update volume configuration for data persistence (Manuel Weiser, eafcf1c)
+- feat(docker): add volume configuration for persistent data storage (Manuel Weiser, 492c829)
+- feat(docker): update container name and environment variables in docker-compose files (Manuel Weiser, 9aa901d)
+- feat(cli): add password reset command for admin recovery (Manuel Weiser, 3a233b7)
+- feat: set default sorting for manufacturers by name in ascending order (Manuel Weiser, b9fe169)
+- feat: clear rfid_uid from spools to prevent UNIQUE constraint violation (Manuel Weiser, 79eb545)
+- feat: add persistent sorting for manufacturers overview in changelog (Manuel Weiser, c0e65a7)
+- feat: restore and save sort state for manufacturers in localStorage (Manuel Weiser, 70e984e)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.19 (gitea-actions, 99a7c26)
+
+### Dokumentation/Tests
+- docs: add password reset CLI to changelog and docker-compose (Manuel Weiser, 0aee7fb)
+- test(cli): add tests for reset_password_core function (Manuel Weiser, 52b7403)
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.18...v1.0.19
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.19)
+
 ## [1.0.18-0] - 2026-03-08
 
 ## Artefakte
