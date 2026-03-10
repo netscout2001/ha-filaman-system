@@ -58,7 +58,9 @@ server {
     }
 
     location / {
-        rewrite ^([^.]*[^/])$ \$1/ last;
+        if (\$request_method = GET) {
+            rewrite ^(/(?!api/|login|logout)[^.]*[^/])$ \$1/ last;
+        }
 
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
@@ -100,7 +102,9 @@ server {
     }
 
     location / {
-        rewrite ^([^.]*[^/])$ \$1/ last;
+        if (\$request_method = GET) {
+            rewrite ^(/(?!api/|login|logout)[^.]*[^/])$ \$1/ last;
+        }
 
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
