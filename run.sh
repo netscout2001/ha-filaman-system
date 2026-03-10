@@ -64,12 +64,15 @@ server {
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto https;
         proxy_set_header        X-Forwarded-Port 8443;
+        proxy_set_header        Origin \$scheme://\$http_host;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
 
         proxy_intercept_errors  off;
         proxy_redirect          http://127.0.0.1:8001/ /;
+        proxy_cookie_path       / /;
+        proxy_cookie_domain     127.0.0.1 \$host;
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
@@ -101,12 +104,15 @@ server {
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto http;
         proxy_set_header        X-Forwarded-Port 8000;
+        proxy_set_header        Origin \$scheme://\$http_host;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
 
         proxy_intercept_errors  off;
         proxy_redirect          http://127.0.0.1:8001/ /;
+        proxy_cookie_path       / /;
+        proxy_cookie_domain     127.0.0.1 \$host;
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
