@@ -77,7 +77,7 @@ server {
 
     location / {
         if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout|stream)[^.]*[^/])$ \$1/ last;
+            rewrite ^(/(?!api/|login|logout|stream)[a-z/-]+[a-z-])$ \$1/ last;
         }
 
         proxy_pass              http://127.0.0.1:8001;
@@ -138,7 +138,7 @@ server {
 
     location / {
         if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout|stream)[^.]*[^/])$ \$1/ last;
+            rewrite ^(/(?!api/|login|logout|stream)[a-z/-]+[a-z-])$ \$1/ last;
         }
 
         proxy_pass              http://127.0.0.1:8001;
