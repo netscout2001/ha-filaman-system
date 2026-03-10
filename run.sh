@@ -11,6 +11,7 @@ echo "SSL enabled: ${SSL}"
 
 # Nginx default site deaktivieren
 rm -f /etc/nginx/sites-enabled/default
+rm -f /etc/nginx/conf.d/default.conf 
 mkdir -p /etc/nginx/conf.d
 
 if [ "$SSL" = "true" ]; then
