@@ -1,3 +1,27 @@
+## [1.0.21-0] - 2026-03-10
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.0.21`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add migration to normalize RFID tag UIDs by padding hex segments with leading zeros (Manuel Weiser, 914a27d)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.0.21 (gitea-actions, fd4958b)
+- chore: add uid.md to .gitignore (Manuel Weiser, 2b55faa)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.20...v1.0.21
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.0.21)
+
 ## [1.0.20-0] - 2026-03-10
 
 ## Artefakte
