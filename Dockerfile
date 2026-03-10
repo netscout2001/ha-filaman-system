@@ -1,5 +1,5 @@
 # Actual Release
-FROM ghcr.io/fire-devils/filaman-system:v1.0.21
+FROM ghcr.io/fire-devils/filaman-system:v1.1.1
 
 # nginx installieren (Alpine-based Image)
 RUN apt-get update && apt-get install -y --no-install-recommends nginx openssl jq && rm -rf /var/lib/apt/lists/*

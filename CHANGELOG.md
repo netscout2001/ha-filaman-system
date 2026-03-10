@@ -1,3 +1,35 @@
+## [1.1.1-0] - 2026-03-10
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.1`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add column visibility feature for filaments, manufacturers, and spools tables (Manuel Weiser, 6fd94d3)
+- feat: replace dashboard icon with total value display in dashboard (Manuel Weiser, 6342645)
+- feat: implement live-update functionality for spools, filaments, manufacturers, colors, and locations (Manuel Weiser, 1b7d25f)
+- feat: delete reused empty spool when creating new spool from it (Manuel Weiser, 54f9f7f)
+- feat: optimize empty spool loading with status caching and improved error handling (Manuel Weiser, cf70073)
+- feat: add functionality to create new spools from empty spools and enhance UI for spool selection (Manuel Weiser, 2908ad0)
+- feat: extend extra fields improvements to spool details page (Manuel Weiser, 360ad3a)
+- feat: add improvements for filament details display and system field handling (Manuel Weiser, c682c77)
+
+### Fixes
+- fix: fix empty spool dropdown visibility in modal (Manuel Weiser, d9ffd2f)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.1 (gitea-actions, 5dc66b4)
+- chore: update version to 1.1.0 (Manuel Weiser, f467cbd)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.0.21...v1.1.1
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.1)
+
 ## [1.0.21-0] - 2026-03-10
 
 ## Artefakte
