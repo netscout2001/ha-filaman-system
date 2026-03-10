@@ -119,4 +119,4 @@ echo "Starting nginx..."
 nginx
 
 echo "Starting FilaMan app..."
-exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*' --workers 2"
+exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*'"
