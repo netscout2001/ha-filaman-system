@@ -30,6 +30,11 @@ if [ "$SSL" = "true" ]; then
     fi
 
     cat > /etc/nginx/conf.d/default.conf << EOF
+upstream filaman {
+    server 127.0.0.1:8001;
+    keepalive 32;
+}
+
 server {
     listen 8000;
 
@@ -52,27 +57,14 @@ server {
     ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_ciphers         HIGH:!aNULL:!MD5;
 
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json;
+    gzip_min_length 1000;
+
     location /health {
         access_log off;
         return 200 "ok";
         add_header Content-Type text/plain;
-    }
-
-    location /stream {
-        proxy_pass              http://127.0.0.1:8001;
-        proxy_set_header        Host \$http_host;
-        proxy_set_header        X-Real-IP \$remote_addr;
-        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header        X-Forwarded-Proto https;
-        proxy_set_header        X-Forwarded-Port 8443;
-        proxy_http_version      1.1;
-        proxy_set_header        Connection "";
-
-        proxy_read_timeout      3600s;
-        proxy_send_timeout      3600s;
-        proxy_buffering         off;
-        proxy_cache             off;
-        proxy_set_header        X-Accel-Buffering no;
     }
 
     location / {
@@ -80,7 +72,7 @@ server {
             rewrite ^(/(?!api/|login|logout|stream)[a-z/-]+[a-z-])$ \$1/ last;
         }
 
-        proxy_pass              http://127.0.0.1:8001;
+        proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -93,7 +85,7 @@ server {
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
-        proxy_read_timeout      30s;
+        proxy_read_timeout      60s;
 
         proxy_buffering         off;
         proxy_cache             off;
@@ -105,8 +97,17 @@ EOF
 else
 
     cat > /etc/nginx/conf.d/default.conf << EOF
+upstream filaman {
+    server 127.0.0.1:8001;
+    keepalive 32;
+}
+
 server {
     listen 8000;
+
+    gzip on;
+    gzip_types text/plain text/css application/javascript application/json;
+    gzip_min_length 1000;
 
     location /health {
         access_log off;
@@ -114,29 +115,12 @@ server {
         add_header Content-Type text/plain;
     }
 
-    location /stream {
-        proxy_pass              http://127.0.0.1:8001;
-        proxy_set_header        Host \$http_host;
-        proxy_set_header        X-Real-IP \$remote_addr;
-        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header        X-Forwarded-Proto http;
-        proxy_set_header        X-Forwarded-Port 8000;
-        proxy_http_version      1.1;
-        proxy_set_header        Connection "";
-
-        proxy_read_timeout      3600s;
-        proxy_send_timeout      3600s;
-        proxy_buffering         off;
-        proxy_cache             off;
-        proxy_set_header        X-Accel-Buffering no;
-    }
-
     location / {
         if (\$request_method = GET) {
             rewrite ^(/(?!api/|login|logout|stream)[a-z/-]+[a-z-])$ \$1/ last;
         }
 
-        proxy_pass              http://127.0.0.1:8001;
+        proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
@@ -149,7 +133,7 @@ server {
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
-        proxy_read_timeout      30s;
+        proxy_read_timeout      60s;
 
         proxy_buffering         off;
         proxy_cache             off;
