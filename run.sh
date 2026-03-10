@@ -57,9 +57,26 @@ server {
         add_header Content-Type text/plain;
     }
 
+    location /stream {
+        proxy_pass              http://127.0.0.1:8001;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        X-Forwarded-Port 8443;
+        proxy_http_version      1.1;
+        proxy_set_header        Connection "";
+
+        proxy_read_timeout      3600s;
+        proxy_send_timeout      3600s;
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
+    }
+
     location / {
         if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout)[^.]*[^/])$ \$1/ last;
+            rewrite ^(/(?!api/|login|logout|admin/|stream)[^.]*[^/])$ \$1/ last;
         }
 
         proxy_pass              http://127.0.0.1:8001;
@@ -101,9 +118,26 @@ server {
         add_header Content-Type text/plain;
     }
 
+    location /stream {
+        proxy_pass              http://127.0.0.1:8001;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto http;
+        proxy_set_header        X-Forwarded-Port 8000;
+        proxy_http_version      1.1;
+        proxy_set_header        Connection "";
+
+        proxy_read_timeout      3600s;
+        proxy_send_timeout      3600s;
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
+    }
+
     location / {
         if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout)[^.]*[^/])$ \$1/ last;
+            rewrite ^(/(?!api/|login|logout|admin/|stream)[^.]*[^/])$ \$1/ last;
         }
 
         proxy_pass              http://127.0.0.1:8001;
