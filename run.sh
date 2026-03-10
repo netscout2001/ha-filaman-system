@@ -9,7 +9,6 @@ KEYFILE=$(jq --raw-output '.keyfile // "privkey.pem"' $CONFIG_PATH)
 
 echo "SSL enabled: ${SSL}"
 
-# Nginx default site deaktivieren und alte Config löschen
 rm -f /etc/nginx/sites-enabled/default
 rm -f /etc/nginx/conf.d/default.conf
 mkdir -p /etc/nginx/conf.d
@@ -107,4 +106,17 @@ server {
         proxy_send_timeout      30s;
         proxy_read_timeout      30s;
 
-        proxy_buffering
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
+    }
+}
+EOF
+
+fi
+
+echo "Starting nginx..."
+nginx
+
+echo "Starting FilaMan app..."
+exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*'"
