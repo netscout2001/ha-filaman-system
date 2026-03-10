@@ -58,8 +58,6 @@ server {
     }
 
     location / {
-        rewrite ^([^.]*[^/])$ \$1/ permanent;
-
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
@@ -69,6 +67,9 @@ server {
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
+
+        proxy_intercept_errors  off;
+        proxy_redirect          http://127.0.0.1:8001/ /;
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
@@ -94,8 +95,6 @@ server {
     }
 
     location / {
-        rewrite ^([^.]*[^/])$ \$1/ permanent;
-
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
@@ -105,6 +104,9 @@ server {
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
+
+        proxy_intercept_errors  off;
+        proxy_redirect          http://127.0.0.1:8001/ /;
 
         proxy_connect_timeout   10s;
         proxy_send_timeout      30s;
