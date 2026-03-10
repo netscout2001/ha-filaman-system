@@ -58,6 +58,8 @@ server {
     }
 
     location / {
+        rewrite ^([^.]*[^/])$ \$1/ permanent;
+
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
@@ -92,6 +94,8 @@ server {
     }
 
     location / {
+        rewrite ^([^.]*[^/])$ \$1/ permanent;
+
         proxy_pass              http://127.0.0.1:8001;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
