@@ -1,3 +1,26 @@
+## [1.1.2-0] - 2026-03-10
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.2`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add fix for connection issues in live updates and update SSE handling in printer and spool pages (Manuel Weiser, ce83f7c)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.2 (gitea-actions, d734648)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.1...v1.1.2
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.2)
+
 ## [1.1.1-0] - 2026-03-10
 
 ## Artefakte
