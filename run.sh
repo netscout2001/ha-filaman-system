@@ -46,6 +46,7 @@ server {
 
 server {
     listen 8443 ssl;
+    http2 on;
     ssl_certificate     ${CERT_PATH};
     ssl_certificate_key ${KEY_PATH};
     ssl_protocols       TLSv1.2 TLSv1.3;
