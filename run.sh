@@ -9,9 +9,9 @@ KEYFILE=$(jq --raw-output '.keyfile // "privkey.pem"' $CONFIG_PATH)
 
 echo "SSL enabled: ${SSL}"
 
-# Nginx default site deaktivieren
+# Nginx default site deaktivieren und alte Config löschen
 rm -f /etc/nginx/sites-enabled/default
-rm -f /etc/nginx/conf.d/default.conf 
+rm -f /etc/nginx/conf.d/default.conf
 mkdir -p /etc/nginx/conf.d
 
 if [ "$SSL" = "true" ]; then
@@ -59,15 +59,23 @@ server {
     }
 
     location / {
-        proxy_pass         http://127.0.0.1:8001;
-        proxy_set_header   Host \$http_host;
-        proxy_set_header   X-Real-IP \$remote_addr;
-        proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Proto https;
-        proxy_set_header   X-Forwarded-Port 8443;
-        proxy_http_version 1.1;
-        proxy_set_header   Upgrade \$http_upgrade;
-        proxy_set_header   Connection "upgrade";
+        proxy_pass              http://127.0.0.1:8001;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        X-Forwarded-Port 8443;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade \$http_upgrade;
+        proxy_set_header        Connection "upgrade";
+
+        proxy_connect_timeout   10s;
+        proxy_send_timeout      30s;
+        proxy_read_timeout      30s;
+
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
     }
 }
 EOF
@@ -85,23 +93,18 @@ server {
     }
 
     location / {
-        proxy_pass         http://127.0.0.1:8001;
-        proxy_set_header   Host \$http_host;
-        proxy_set_header   X-Real-IP \$remote_addr;
-        proxy_set_header   X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header   X-Forwarded-Proto http;
-        proxy_set_header   X-Forwarded-Port 8000;
-        proxy_http_version 1.1;
-        proxy_set_header   Upgrade \$http_upgrade;
-        proxy_set_header   Connection "upgrade";
-    }
-}
-EOF
+        proxy_pass              http://127.0.0.1:8001;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto http;
+        proxy_set_header        X-Forwarded-Port 8000;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade \$http_upgrade;
+        proxy_set_header        Connection "upgrade";
 
-fi
+        proxy_connect_timeout   10s;
+        proxy_send_timeout      30s;
+        proxy_read_timeout      30s;
 
-echo "Starting nginx..."
-nginx
-
-echo "Starting FilaMan app..."
-exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*'"
+        proxy_buffering
