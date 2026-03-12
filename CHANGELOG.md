@@ -1,3 +1,32 @@
+## [1.1.3-0] - 2026-03-12
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.3`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: implement ID reuse for manufacturers, filaments, and spools; update changelog (Manuel Weiser, 4fbc30e)
+- feat: enhance filament search functionality to support multiple search terms and update changelog (Manuel Weiser, db322c6)
+- feat: update changelog with new fixes for RFID tag writing and enhance spool detail page functionality (Manuel Weiser, 7bc7993)
+- feat: add functionality to create a new spool directly from the filament detail page and update changelog (Manuel Weiser, 3a7b841)
+- feat: update sync button text formatting on printer detail page (Manuel Weiser, f45cc66)
+- feat: update changelog with new features for Bambuddy integration and enhance printer detail page with sync actions (Manuel Weiser, 60c2e53)
+- feat: enrich filament data with spool ID in driver action and update changelog for new fix (Manuel Weiser, 2cb14da)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.3 (gitea-actions, fb2a27c)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.2...v1.1.3
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.3)
+
 ## [1.1.2-0] - 2026-03-10
 
 ## Artefakte
