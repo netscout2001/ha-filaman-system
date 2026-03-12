@@ -1,3 +1,26 @@
+## [1.1.4-0] - 2026-03-12
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.4`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add fixes for Bambuddy plugin and update button feedback during sync actions (Manuel Weiser, 159b530)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.4 (gitea-actions, 33fa173)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.3...v1.1.4
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.4)
+
 ## [1.1.3-0] - 2026-03-12
 
 ## Artefakte
