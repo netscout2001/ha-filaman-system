@@ -1,3 +1,33 @@
+## [1.1.5-0] - 2026-03-13
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.5`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: implement inventory backup and restore functionality with UI integration (Manuel Weiser, bf84090)
+- feat: implement SQLite backup and restore functionality with UI integration (Manuel Weiser, 05f5229)
+- feat: implement database backup and restore functionality with UI integration (Manuel Weiser, fd5253d)
+- feat: implement database backup and restore functionality with export and import options (Manuel Weiser, 0ffe5f1)
+
+### Fixes
+- fix: replace alert with success notification for backup and restore actions (Manuel Weiser, f66be83)
+- fix: clarify comments regarding data deletion and seed data retention (Manuel Weiser, 0cf27c1)
+- fix: improve data import by mapping column names to attributes for bulk insert (Manuel Weiser, 97a5be5)
+- fix: update row serialization to use column attributes for improved compatibility (Manuel Weiser, bb9555b)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.5 (gitea-actions, 84e1d45)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.4...v1.1.5
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.5)
+
 ## [1.1.4-0] - 2026-03-12
 
 ## Artefakte
