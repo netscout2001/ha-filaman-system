@@ -1,3 +1,26 @@
+## [1.1.6-0] - 2026-03-13
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.6`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Add show_in_nav to installed plugins and update navigation (Manuel Weiser, df8cfdd)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.6 (gitea-actions, 5d762a5)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.5...v1.1.6
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.6)
+
 ## [1.1.5-0] - 2026-03-13
 
 ## Artefakte
