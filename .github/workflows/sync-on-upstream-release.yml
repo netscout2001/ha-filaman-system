@@ -212,7 +212,8 @@ jobs:
 
           api_url="https://api.github.com/repos/${{ github.repository }}/releases"
           HA_TAG="${NEW_TAG}-0"
-          payload=$(jq -n --arg tag "$HA_TAG" --arg name "$RELEASE_NAME" --arg body "$RELEASE_BODY" \
+          HA_NAME="${RELEASE_NAME}-0"
+          payload=$(jq -n --arg tag "$HA_TAG" --arg name "$HA_NAME" --arg body "$RELEASE_BODY" \
             '{ tag_name: $tag, name: $name, body: $body, draft: false, prerelease: false }')
 
           http_code=$(curl -s -o /tmp/release_resp.json -w "%{http_code}" -X POST \
