@@ -68,22 +68,17 @@ server {
     }
 
     location / {
-       #if (\$request_method = GET) {
-       #     rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
-       # }
-
         proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto https;
         proxy_set_header        X-Forwarded-Port 8443;
-        proxy_set_header        Origin \$scheme://\$http_host;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
 
-        proxy_connect_timeout   10s;
+        proxy_connect_timeout   2s;
         proxy_send_timeout      30s;
         proxy_read_timeout      60s;
 
@@ -116,22 +111,17 @@ server {
     }
 
     location / {
-        #if (\$request_method = GET) {
-        #    rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
-        #}
-
         proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
         proxy_set_header        X-Real-IP \$remote_addr;
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto http;
         proxy_set_header        X-Forwarded-Port 8000;
-        proxy_set_header        Origin \$scheme://\$http_host;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
         proxy_set_header        Connection "upgrade";
 
-        proxy_connect_timeout   10s;
+        proxy_connect_timeout   2s;
         proxy_send_timeout      30s;
         proxy_read_timeout      60s;
 
