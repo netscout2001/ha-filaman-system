@@ -1,3 +1,8 @@
+## [1.1.6-1] - 2026-03-14
+
+### Fixes
+run.sh Updates and performance Optimations in nginx
+
 ## [1.1.6-0] - 2026-03-13
 
 ## Artefakte
