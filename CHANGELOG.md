@@ -1,3 +1,33 @@
+## [1.1.7-0] - 2026-03-14
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.7`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Add back navigation link to spool print page and update translations (Manuel Weiser, f4c05c4)
+- feat: Copy Astro scoped-style attributes for dynamic extra fields checkboxes (Manuel Weiser, 6b39a77)
+- feat: Refactor extra fields section for improved visibility and styling (Manuel Weiser, 5cf3e87)
+- feat: Refactor extra fields handling in print page for improved checkbox grouping and visibility (Manuel Weiser, 57cf399)
+- feat: Enhance label printing with additional filament extra fields and improved checkbox grouping (Manuel Weiser, 9245430)
+- feat: Update changelog for versioning and add extra fields support in label printing (Manuel Weiser, 434f287)
+- feat: Add support for extra fields in label printing and update changelog (Manuel Weiser, da92a36)
+
+### Fixes
+- fix: Remove target="_blank" from print label link for improved accessibility (Manuel Weiser, 98e4ba6)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.7 (gitea-actions, 3629f10)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.6...v1.1.7
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.7)
+
 ## [1.1.6-1] - 2026-03-14
 
 ### Fixes
