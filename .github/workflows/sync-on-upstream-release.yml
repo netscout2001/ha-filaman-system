@@ -55,7 +55,7 @@ jobs:
         run: |
           echo "upstream tag: ${{ steps.upstream.outputs.tag }}"
           echo "last synced : ${{ steps.readlast.outputs.last }}"
-          
+
       - name: "Wait for upstream image to be available"
         if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
         run: |
@@ -123,7 +123,7 @@ jobs:
           fi
 
           echo "Upstream image ${IMAGE_REF} is available — continuing with release sync."
-          
+
       - name: "Prepare repo changes (only if new upstream release)"
         if: ${{ steps.upstream.outputs.tag != steps.readlast.outputs.last }}
         run: |
@@ -148,7 +148,6 @@ jobs:
           TAG_STRIPPED="${TAG_STRIPPED#V}"
           HEADER_TAG="${TAG_STRIPPED}-0"
           printf "## [%s] - %s\n\n%s\n\n(Upstream release: %s)\n\n" "$HEADER_TAG" "$TODAY" "$RELEASE_BODY" "$RELEASE_LINK" > /tmp/new_changelog_entry.md
-          # printf "## %s — %s\n\n%s\n\n(Upstream release: %s)\n\n" "$NEW_TAG" "$TODAY" "$RELEASE_BODY" "$RELEASE_LINK" > /tmp/new_changelog_entry.md
           cat /tmp/new_changelog_entry.md CHANGELOG.md > /tmp/CHANGELOG.new && mv /tmp/CHANGELOG.new CHANGELOG.md
 
           # 2) Update Dockerfile — replace upstream image tag (case-insensitive-ish)
