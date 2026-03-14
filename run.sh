@@ -68,9 +68,9 @@ server {
     }
 
     location / {
-        if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
-        }
+       #if (\$request_method = GET) {
+       #     rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
+       # }
 
         proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
@@ -116,9 +116,9 @@ server {
     }
 
     location / {
-        if (\$request_method = GET) {
-            rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
-        }
+        #if (\$request_method = GET) {
+        #    rewrite ^(/(?!api/|login|logout|stream|plugin-page/)[a-z/-]+[a-z-])$ \$1/ last;
+        #}
 
         proxy_pass              http://filaman;
         proxy_set_header        Host \$http_host;
