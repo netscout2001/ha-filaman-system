@@ -1,3 +1,22 @@
+## [1.1.9-1] - 2026-03-15
+
+## Änderungen
+## v1.1.9
+
+Aligns with upstream FilaMan v1.1.9 which switches the application server from uvicorn to Gunicorn with 4 UvicornWorkers for improved stability and concurrency.
+
+### Changes
+- Replace `uvicorn` with `gunicorn -w 4 -k uvicorn.workers.UvicornWorker`
+- Add `--timeout 120` to prevent premature worker kills on slow hardware
+- Add `--graceful-timeout 10` for clean shutdown on addon stop
+- Add `--max-requests 1000 / --max-requests-jitter 100` to prevent memory leaks via periodic worker recycling
+- Route access and error logs to stdout for HA addon log visibility
+- Simplify startup command using `--chdir` instead of bash wrapper
+- 
+### Features
+- feat: Add unreleased changes for server switch to Gunicorn with 4 workers (Manuel Weiser, 085e138)
+- feat: Update Dockerfile to use Gunicorn with Uvicorn workers and add Gunicorn dependency (Manuel Weiser, 63432b0)
+
 ## [1.1.9-0] - 2026-03-15
 
 ## Artefakte
