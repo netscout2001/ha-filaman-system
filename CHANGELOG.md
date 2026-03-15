@@ -1,8 +1,3 @@
-## [1.1.9-3] - 2026-03-15
-
-## Changes
-- Switched off Ingress 
-
 ## [1.1.9-2] - 2026-03-15
 
 ## Changes
