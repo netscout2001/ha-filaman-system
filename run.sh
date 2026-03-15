@@ -138,4 +138,15 @@ echo "Starting nginx..."
 nginx
 
 echo "Starting FilaMan app..."
-exec /bin/bash -c "cd /app && uvicorn app.main:app --host 0.0.0.0 --port 8001 --proxy-headers --forwarded-allow-ips='*'"
+exec gunicorn --chdir /app \
+    -w 4 \
+    -k uvicorn.workers.UvicornWorker \
+    app.main:app \
+    --bind 0.0.0.0:8001 \
+    --forwarded-allow-ips='*' \
+    --timeout 120 \
+    --graceful-timeout 10 \
+    --max-requests 1000 \
+    --max-requests-jitter 100 \
+    --access-logfile - \
+    --error-logfile -
