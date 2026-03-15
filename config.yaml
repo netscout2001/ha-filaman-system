@@ -7,6 +7,11 @@ arch:
   - amd64
   - aarch64
 startup: services
+
+ingress: true
+#ingress_port: 8000
+ingress_stream: true
+
 init: false
 ports:
   8000/tcp: 8000
@@ -17,6 +22,10 @@ options:
   keyfile: privkey.pem
 map:
   - ssl
+  - addon_config:rw
+
+host_network: true
+
 schema:
   ssl: bool
   certfile: str
