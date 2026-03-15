@@ -1,3 +1,27 @@
+## [1.1.9-0] - 2026-03-15
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.9`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Add unreleased changes for server switch to Gunicorn with 4 workers (Manuel Weiser, 085e138)
+- feat: Update Dockerfile to use Gunicorn with Uvicorn workers and add Gunicorn dependency (Manuel Weiser, 63432b0)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.9 (gitea-actions, af582ab)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.8...v1.1.9
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.9)
+
 ## [1.1.8-0] - 2026-03-15
 
 ## Artefakte
