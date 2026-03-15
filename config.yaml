@@ -3,7 +3,7 @@ version: "v1.1.9-2"
 slug: filaman_system_app
 description: "A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support."
 url: https://github.com/netscout2001/ha-filaman-system
-panel_icon: mdi:printer-3d-nozzle
+panel_icon: mdi:printer-3d
 panel_title: FilaMan
 arch:
   - amd64
