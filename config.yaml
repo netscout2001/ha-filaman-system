@@ -22,7 +22,6 @@ options:
   keyfile: privkey.pem
 map:
   - ssl
-  - addon_config:rw
 schema:
   ssl: bool
   certfile: str
