@@ -116,6 +116,9 @@ server {
         proxy_set_header        X-Real-IP \$remote_addr;
         proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto http;
+        
+        proxy_set_header        X-Forwarded-Ssl off;
+        
         proxy_set_header        X-Forwarded-Port 8000;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
@@ -143,7 +146,8 @@ exec gunicorn --chdir /app \
     -k uvicorn.workers.UvicornWorker \
     app.main:app \
     --bind 0.0.0.0:8001 \
-    --forwarded-allow-ips='*' \
+    --forwarded-allow-ips='127.0.0.1' \
+    #--forwarded-allow-ips='*' \
     --timeout 120 \
     --graceful-timeout 10 \
     --max-requests 1000 \
