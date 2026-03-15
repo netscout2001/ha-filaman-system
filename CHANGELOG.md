@@ -1,9 +1,12 @@
+## [1.1.9-2] - 2026-03-15
+
+## Changes
+- Switched to Ingress 
+
 ## [1.1.9-1] - 2026-03-15
 
-## Änderungen
-## v1.1.9
-
-Aligns with upstream FilaMan v1.1.9 which switches the application server from uvicorn to Gunicorn with 4 UvicornWorkers for improved stability and concurrency.
+## Changes
+- Aligns with upstream FilaMan v1.1.9 which switches the application server from uvicorn to Gunicorn with 4 UvicornWorkers for improved stability and concurrency.
 
 ### Changes
 - Replace `uvicorn` with `gunicorn -w 4 -k uvicorn.workers.UvicornWorker`
