@@ -9,7 +9,7 @@ arch:
 startup: services
 
 ingress: true
-ingress_port: 8001
+ingress_port: 8000
 ingress_stream: true
 
 init: false
