@@ -1,5 +1,5 @@
 name: "FilaMan System"
-version: "v1.1.9-1"
+version: "v1.1.9-2"
 slug: filaman_system_app
 description: "A filament management system for 3D printing with spool tracking, AMS integration, and multi-user support."
 url: https://github.com/netscout2001/ha-filaman-system
@@ -7,12 +7,10 @@ arch:
   - amd64
   - aarch64
 startup: services
-
+init: false
 ingress: true
 ingress_port: 8000
 ingress_stream: true
-
-init: false
 ports:
   8000/tcp: 8000
   8443/tcp: 8443
@@ -23,15 +21,11 @@ options:
 map:
   - ssl
   - addon_config:rw
-
-host_network: true
-
 schema:
   ssl: bool
   certfile: str
   keyfile: str
 ports_description:
-  8000/tcp: "Web interface port. If another add-on uses this host port, HA will show an error."
-  8443/tcp: "Secure Web interface port. If another add-on uses this host port, HA will show an error."
-webui: "http://[HOST]:[PORT:8000]"
+  8000/tcp: "Web interface port (direct access). If another add-on uses this host port, HA will show an error."
+  8443/tcp: "Secure Web interface port (direct access). If another add-on uses this host port, HA will show an error."
 watchdog: "http://[HOST]:[PORT:8000]/health"
