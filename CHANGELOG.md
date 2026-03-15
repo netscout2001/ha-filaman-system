@@ -1,6 +1,11 @@
 ## [1.1.9-2] - 2026-03-15
 
 ## Changes
+- Switched off Ingress (issues with non SSL)
+
+## [1.1.9-2] - 2026-03-15
+
+## Changes
 - Switched to Ingress 
 
 ## [1.1.9-1] - 2026-03-15
