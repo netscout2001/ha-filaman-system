@@ -13,12 +13,14 @@ https://github.com/netscout2001/ha-filaman-system
 2. Install the **Filaman System** add-on.
 3. Configure if you want HTTP or HTTPS (use of your HomeAssistant Cert or it will generate a self signed)
 4. Start the add-on.  
-5. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
+5. Access the Ui via HomeAssistant
+   5a. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
 6. Login:
    Default Email: admin@example.com
    Default Password: admin123
 
 ## Features
+- HA Ingress Support
 - HTTPS Support: Optional HTTPS support via nginx reverse proxy. SSL can be enabled or disabled via the add-on options.
 - Self-signed Certificate: If SSL is enabled and no certificate is found at the configured path, a self-signed certificate is automatically generated.
 - Let's Encrypt Support: Certificates managed by the Home Assistant Let's Encrypt add-on are supported via the /ssl/ volume mapping.
