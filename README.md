@@ -14,8 +14,8 @@ https://github.com/netscout2001/ha-filaman-system
 3. Configure if you want HTTP or HTTPS (use of your HomeAssistant Cert or it will generate a self signed)
 4. Start the add-on.  
 5. Access the Ui via HomeAssistant
-   5a. Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
-6. Login:
+6. Alternate: Access the WebUI at: `http://<HOME_ASSISTANT_HOST>:<PORT:8000>`. (If you configure SSL it will automatically forward you from Port 8000 to 8443)
+7. Login:
    Default Email: admin@example.com
    Default Password: admin123
 
