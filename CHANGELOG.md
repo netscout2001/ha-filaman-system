@@ -1,3 +1,28 @@
+## [1.1.8-0] - 2026-03-15
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.8`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Add optional extra fields printing for labels in version 1.1.7 (Manuel Weiser, 0a8dd49)
+- feat: Enhance print functionality and improve layout visibility (Manuel Weiser, 2ab4f37)
+- feat: Update changelog for version 1.1.7 and fix print button functionality (Manuel Weiser, 248ad38)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.8 (gitea-actions, 4776161)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.7...v1.1.8
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.8)
+
 ## [1.1.7-0] - 2026-03-14
 
 ## Artefakte
