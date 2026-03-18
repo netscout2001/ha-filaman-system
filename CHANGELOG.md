@@ -1,3 +1,32 @@
+## [1.1.10-0] - 2026-03-18
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.10`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(frontend): add spool log page and update navigation (Manuel Weiser, e9cf492)
+- feat(frontend): add success and error messages for printer parameter actions (Manuel Weiser, 57285be)
+- feat(frontend): add API keys management link to settings page (Manuel Weiser, 6fef864)
+- feat(frontend): add API key management UI to settings page (Manuel Weiser, a187ba5)
+- feat(api): add CRUD endpoints for user API keys under /me/api-keys (Manuel Weiser, 0b1f958)
+
+### Fixes
+- fix(i18n): add missing API key translation keys for EN and DE (Manuel Weiser, 5971aa8)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.10 (gitea-actions, cda3841)
+- chore: update .gitignore to include Claude and agent-related files (Manuel Weiser, bf50276)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.9...v1.1.10
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.10)
+
 ## [1.1.9-3] - 2026-03-15
 
 ## Changes
