@@ -1,3 +1,25 @@
+## [1.1.11-0] - 2026-03-18
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.11`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(frontend): add save feedback messages and improve pagination layout (Manuel Weiser, bafd712)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.10...v1.1.11
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.11)
+
 ## [1.1.10-0] - 2026-03-18
 
 ## Artefakte
