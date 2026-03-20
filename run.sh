@@ -67,7 +67,7 @@ http {
         }
 
         location / {
-            return 301 https://\$host:8443\$request_uri;
+            return 302 https://\$host:8443\$request_uri;
         }
     }
 
