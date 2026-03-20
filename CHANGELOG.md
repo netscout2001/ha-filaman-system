@@ -1,3 +1,12 @@
+## [1.1.12-1] - 2026-03-20
+
+## Changes
+
+- Fixed double nginx startup crash: upstream `docker-entrypoint.sh` now starts nginx internally (v1.1.12+); patched via `sed` in Dockerfile to prevent port-8000 conflict with `run.sh`
+- Added dedicated SSE location block (`/api/v1/events/stream`) with `proxy_read_timeout 86400s` and `chunked_transfer_encoding off` for stable real-time event streaming
+- Changed gunicorn bind from `0.0.0.0:8001` to `127.0.0.1:8001` — consistent with upstream intent (port not exposed externally)
+- Extended `gzip_types` with `image/svg+xml` — aligned with upstream nginx.conf
+
 ## [1.1.12-0] - 2026-03-20
 
 ## Artefakte
