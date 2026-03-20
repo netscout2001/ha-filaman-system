@@ -88,6 +88,13 @@ http {
         gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
         gzip_min_length 1000;
 
+        # Fix: Backend sends Access-Control-Allow-Origin: * with credentials,
+        # which browsers reject. Replace with the actual request origin.
+        proxy_hide_header Access-Control-Allow-Origin;
+        proxy_hide_header Access-Control-Allow-Credentials;
+        add_header Access-Control-Allow-Origin \$http_origin always;
+        add_header Access-Control-Allow-Credentials true always;
+
         location /health {
             access_log off;
             return 200 "ok";
@@ -173,6 +180,13 @@ http {
         gzip on;
         gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
         gzip_min_length 1000;
+
+        # Fix: Backend sends Access-Control-Allow-Origin: * with credentials,
+        # which browsers reject. Replace with the actual request origin.
+        proxy_hide_header Access-Control-Allow-Origin;
+        proxy_hide_header Access-Control-Allow-Credentials;
+        add_header Access-Control-Allow-Origin \$http_origin always;
+        add_header Access-Control-Allow-Credentials true always;
 
         location /health {
             access_log off;
