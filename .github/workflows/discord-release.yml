@@ -2,6 +2,7 @@ name: Discord - Release notification
 on:
   release:
     types: [published]
+  workflow_dispatch:
 jobs:
   notify:
     runs-on: ubuntu-latest
