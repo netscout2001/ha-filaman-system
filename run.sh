@@ -58,13 +58,29 @@ server {
     ssl_ciphers         HIGH:!aNULL:!MD5;
 
     gzip on;
-    gzip_types text/plain text/css application/javascript application/json;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
     gzip_min_length 1000;
 
     location /health {
         access_log off;
         return 200 "ok";
         add_header Content-Type text/plain;
+    }
+
+    # SSE endpoint — disable buffering for real-time events
+    location = /api/v1/events/stream {
+        proxy_pass              http://filaman;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        X-Forwarded-Port 8443;
+        proxy_http_version      1.1;
+
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_read_timeout      86400s;
+        chunked_transfer_encoding off;
     }
 
     location / {
@@ -101,13 +117,29 @@ server {
     listen 8000;
 
     gzip on;
-    gzip_types text/plain text/css application/javascript application/json;
+    gzip_types text/plain text/css application/javascript application/json image/svg+xml;
     gzip_min_length 1000;
 
     location /health {
         access_log off;
         return 200 "ok";
         add_header Content-Type text/plain;
+    }
+
+    # SSE endpoint — disable buffering for real-time events
+    location = /api/v1/events/stream {
+        proxy_pass              http://filaman;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto http;
+        proxy_set_header        X-Forwarded-Port 8000;
+        proxy_http_version      1.1;
+
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_read_timeout      86400s;
+        chunked_transfer_encoding off;
     }
 
     location / {
@@ -142,7 +174,7 @@ exec gunicorn --chdir /app \
     -w 4 \
     -k uvicorn.workers.UvicornWorker \
     app.main:app \
-    --bind 0.0.0.0:8001 \
+    --bind 127.0.0.1:8001 \
     --forwarded-allow-ips='*' \
     --timeout 120 \
     --graceful-timeout 10 \
