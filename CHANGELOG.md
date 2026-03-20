@@ -3,6 +3,7 @@
 ## Changes
 - Added absolute_redirect off to prevent nginx from injecting ports into internal redirects
 - Added X-Forwarded-Host header to all proxy locations (aligned with upstream v1.1.13)
+- Fixed nginx http2 deprecation warning: replaced `listen 8443 ssl http2` with `listen 8443 ssl` + `http2 on` (nginx >= 1.25.1 syntax)
 
 ## [1.1.13-0] - 2026-03-20
 
