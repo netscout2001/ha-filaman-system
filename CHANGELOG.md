@@ -1,3 +1,40 @@
+## [1.1.14-0] - 2026-03-20
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.14`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(i18n): update currency keys to appSettings namespace (Manuel Weiser, f836496)
+- feat(frontend): display currency on manufacturers page (Manuel Weiser, 34583a1)
+- feat(frontend): display currency on filament detail page (Manuel Weiser, 31862ab)
+- feat(frontend): display currency on dashboard (Manuel Weiser, 9671857)
+- feat(api): expose currency via Spoolman-compatible settings endpoint (Manuel Weiser, 6b7bd4d)
+- feat(frontend): add currency dropdown to app settings page (Manuel Weiser, 658d8e3)
+- feat(frontend): add formatPrice utility and i18n keys for currency (Manuel Weiser, efe29b6)
+- feat(api): extend app-settings API with currency field (Manuel Weiser, 5f3f726)
+- feat(backend): add currency field to AppSettings model (Manuel Weiser, d0327d1)
+
+### Fixes
+- fix(admin): fix currency i18n keys and split app settings into card grid (Manuel Weiser, e152261)
+- fix(i18n): move currency keys under appSettings namespace (Manuel Weiser, aafc01c)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.14 (gitea-actions, ee730e2)
+- chore: remove outdated documentation files for API, Docker deployment, and FilaMan overview (Manuel Weiser, 5b1fb60)
+
+### Dokumentation/Tests
+- docs: update changelog to include new currency selection feature (Manuel Weiser, b5d3536)
+- docs: update changelog for currency selection feature (Manuel Weiser, a4fef68)
+- test(app-settings): add currency field tests (Manuel Weiser, ac5b98e)
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.13...v1.1.14
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.14)
+
 ## [1.1.13-1] - 2026-03-20
 
 ## Changes
