@@ -44,21 +44,24 @@ http {
     tcp_nopush      on;
     tcp_nodelay     on;
     keepalive_timeout 65;
+    types_hash_max_size 2048;
 
     gzip on;
     gzip_vary on;
     gzip_proxied any;
     gzip_comp_level 6;
     gzip_min_length 1000;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
     upstream filaman {
         server 127.0.0.1:8001;
         keepalive 32;
     }
 
+    # HTTP — redirect to HTTPS
     server {
         listen 8000;
+        absolute_redirect off;
 
         location /health {
             access_log off;
@@ -71,12 +74,18 @@ http {
         }
     }
 
+    # HTTPS
     server {
         listen 8443 ssl http2;
         ssl_certificate     ${CERT_PATH};
         ssl_certificate_key ${KEY_PATH};
         ssl_protocols       TLSv1.2 TLSv1.3;
         ssl_ciphers         HIGH:!aNULL:!MD5;
+        absolute_redirect off;
+
+        gzip on;
+        gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
+        gzip_min_length 1000;
 
         location /health {
             access_log off;
@@ -90,6 +99,7 @@ http {
             proxy_set_header        X-Real-IP \$remote_addr;
             proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
+            proxy_set_header        X-Forwarded-Host \$host;
             proxy_set_header        X-Forwarded-Port 8443;
             proxy_http_version      1.1;
             proxy_buffering         off;
@@ -104,6 +114,7 @@ http {
             proxy_set_header        X-Real-IP \$remote_addr;
             proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto https;
+            proxy_set_header        X-Forwarded-Host \$host;
             proxy_set_header        X-Forwarded-Port 8443;
             proxy_http_version      1.1;
             proxy_set_header        Upgrade \$http_upgrade;
@@ -140,13 +151,14 @@ http {
     tcp_nopush      on;
     tcp_nodelay     on;
     keepalive_timeout 65;
+    types_hash_max_size 2048;
 
     gzip on;
     gzip_vary on;
     gzip_proxied any;
     gzip_comp_level 6;
     gzip_min_length 1000;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
     upstream filaman {
         server 127.0.0.1:8001;
@@ -155,6 +167,11 @@ http {
 
     server {
         listen 8000;
+        absolute_redirect off;
+
+        gzip on;
+        gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
+        gzip_min_length 1000;
 
         location /health {
             access_log off;
@@ -168,6 +185,7 @@ http {
             proxy_set_header        X-Real-IP \$remote_addr;
             proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto http;
+            proxy_set_header        X-Forwarded-Host \$host;
             proxy_set_header        X-Forwarded-Port 8000;
             proxy_http_version      1.1;
             proxy_buffering         off;
@@ -182,6 +200,7 @@ http {
             proxy_set_header        X-Real-IP \$remote_addr;
             proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header        X-Forwarded-Proto http;
+            proxy_set_header        X-Forwarded-Host \$host;
             proxy_set_header        X-Forwarded-Port 8000;
             proxy_http_version      1.1;
             proxy_set_header        Upgrade \$http_upgrade;
