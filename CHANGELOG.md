@@ -1,3 +1,27 @@
+## [1.1.12-0] - 2026-03-20
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.12`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update changelog for unreleased version with new features and improvements (Manuel Weiser, 3b700d7)
+- feat: add nginx support for static file serving and API proxying (Manuel Weiser, ad26b18)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.12 (gitea-actions, 656a2b3)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.11...v1.1.12
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.12)
+
 ## [1.1.11-0] - 2026-03-18
 
 ## Artefakte
