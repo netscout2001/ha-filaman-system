@@ -1,3 +1,9 @@
+## [1.1.13-1] - 2026-03-20
+
+## Changes
+- Added absolute_redirect off to prevent nginx from injecting ports into internal redirects
+- Added X-Forwarded-Host header to all proxy locations (aligned with upstream v1.1.13)
+
 ## [1.1.13-0] - 2026-03-20
 
 ## Artefakte
