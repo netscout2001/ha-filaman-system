@@ -1,5 +1,5 @@
 # Actual Release
-FROM ghcr.io/fire-devils/filaman-system:v1.1.12
+FROM ghcr.io/fire-devils/filaman-system:v1.1.13
 
 # python:3.11-slim is Debian-based — use apt-get
 # nginx is already bundled in upstream images >= v1.1.12;

@@ -1,3 +1,30 @@
+## [1.1.13-0] - 2026-03-20
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.13`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update proxy headers to use X-Forwarded-* mappings (Manuel Weiser, f73e8f1)
+- feat: enable absolute redirects in nginx configuration (Manuel Weiser, 8e8d3a8)
+- feat: disable absolute redirects in nginx configuration (Manuel Weiser, 7e3f0b3)
+
+### Fixes
+- fix: update version to UNRELEASED in changelog (Manuel Weiser, d09f9ef)
+- fix: comment out absolute_redirect directive in nginx configuration (Manuel Weiser, 63c7f53)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.13 (gitea-actions, 736428a)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.12...v1.1.13
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.13)
+
 ## [1.1.12-1] - 2026-03-20
 
 ## Changes
