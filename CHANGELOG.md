@@ -1,3 +1,33 @@
+## [1.1.15-0] - 2026-03-23
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.15`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(changelog): add fixes for Bambuddy tray linking and AMS display updates (Manuel Weiser, 75d8a6d)
+- feat(plugins): add printer status event handling for frontend updates (Manuel Weiser, a7b044a)
+- feat(spools): optimistic slot update and enhanced tray tooltips (Manuel Weiser, 70589b1)
+- feat: add video project files to .gitignore (Manuel Weiser, fc54929)
+
+### Fixes
+- fix(changelog): remove redundant fix entries and retain essential feature updates (Manuel Weiser, e9bce9d)
+- fix(plugins): include spool_id in enrich_filament_data return value (Manuel Weiser, 4c942c2)
+- fix: update .gitignore to exclude video project files and package.json (Manuel Weiser, 7b32e85)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.15 (gitea-actions, d4efb79)
+
+### Dokumentation/Tests
+- docs(changelog): add bug fix entries for Bambuddy spool assignment (Manuel Weiser, 8bfc516)
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.14...v1.1.15
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.15)
+
 ## [1.1.14-0] - 2026-03-20
 
 ## Artefakte
