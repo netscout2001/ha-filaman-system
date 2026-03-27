@@ -1,3 +1,34 @@
+## [1.1.17-0] - 2026-03-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.17`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: enhance spool assignment with polling for printer health and expected color tracking (Manuel Weiser, 04622a9)
+- feat: enhance spool assignment feedback with animated slot indicators and remove success popup (Manuel Weiser, 338d5b1)
+- feat: add unreleased changes for API documentation display fix in changelog (Manuel Weiser, 14be4fd)
+
+### Fixes
+- fix: add global scope to style tag for slot animations (Manuel Weiser, 0ebc7ba)
+- fix: add global scope to style tag in API documentation (Manuel Weiser, fa5c119)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.17 (gitea-actions, a88e767)
+- refactor: remove optimistic tooltip logic from spool assignment (Manuel Weiser, 9743c6b)
+- refactor: clean up code formatting and improve readability in system.py (Manuel Weiser, 3dbd49a)
+- refactor: update Swagger UI styles for improved text visibility (Manuel Weiser, 6059252)
+- refactor: update Swagger UI styles and remove unnecessary Tailwind resets (Manuel Weiser, 6f30dad)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.16...v1.1.17
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.17)
+
 ## [1.1.16-0] - 2026-03-27
 
 ## Artefakte
