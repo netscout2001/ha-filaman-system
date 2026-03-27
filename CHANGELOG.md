@@ -1,3 +1,29 @@
+## [1.1.16-0] - 2026-03-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.16`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add default density suggestions for filament types and auto-fill functionality in edit and new filament forms (Manuel Weiser, 3148427)
+- feat: add interactive API documentation with Swagger UI and update changelog (Manuel Weiser, 7c21d7b)
+- feat(changelog): add fix for printer slot status display and improve Bambuddy tray linking (Manuel Weiser, 44c5f13)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.16 (gitea-actions, e2b9b64)
+- refactor: remove redundant API section and clean up layout in admin page (Manuel Weiser, 78c1bb7)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.15...v1.1.16
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.16)
+
 ## [1.1.15-0] - 2026-03-23
 
 ## Artefakte
