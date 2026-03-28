@@ -199,8 +199,10 @@ http {
 }
 EOF
 
-    echo "Reloading nginx with SSL config..."
-    nginx -s reload
+    echo "Restarting nginx with SSL config..."
+    nginx -s quit 2>/dev/null || true
+    sleep 1
+    nginx
 
 else
     echo "SSL disabled, keeping upstream nginx config..."
