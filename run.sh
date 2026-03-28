@@ -9,6 +9,10 @@ KEYFILE=$(jq --raw-output '.keyfile // "privkey.pem"' $CONFIG_PATH)
 
 echo "SSL enabled: ${SSL}"
 
+rm -f /etc/nginx/sites-enabled/default
+rm -f /etc/nginx/conf.d/default.conf
+mkdir -p /etc/nginx/conf.d
+
 if [ "$SSL" = "true" ]; then
     CERT_PATH="/ssl/${CERTFILE}"
     KEY_PATH="/ssl/${KEYFILE}"
@@ -25,208 +29,115 @@ if [ "$SSL" = "true" ]; then
         KEY_PATH="/ssl/privkey.pem"
     fi
 
-    cat > /etc/nginx/nginx.conf << EOF
-worker_processes auto;
-error_log /dev/stderr warn;
-pid /run/nginx.pid;
-
-events {
-    worker_connections 1024;
+    cat > /etc/nginx/conf.d/default.conf << EOF
+upstream filaman {
+    server 127.0.0.1:8001;
+    keepalive 32;
 }
 
-http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
+map \$http_upgrade \$connection_upgrade {
+    default upgrade;
+    ""      close;
+}
 
-    access_log /dev/stdout;
+server {
+    listen 8000;
 
-    sendfile        on;
-    tcp_nopush      on;
-    tcp_nodelay     on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
+    }
+
+    location / {
+        return 301 https://\$host:8443\$request_uri;
+    }
+}
+
+server {
+    listen 8443 ssl;
+    http2 on;
+    ssl_certificate     ${CERT_PATH};
+    ssl_certificate_key ${KEY_PATH};
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
 
     gzip on;
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_comp_level 6;
+    gzip_types text/plain text/css application/javascript application/json;
     gzip_min_length 1000;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
-    upstream filaman {
-        server 127.0.0.1:8001;
-        keepalive 32;
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
     }
 
-    # HTTP — redirect to HTTPS
-    server {
-        listen 8000;
-        absolute_redirect off;
+    location / {
+        proxy_pass              http://filaman;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto https;
+        proxy_set_header        X-Forwarded-Port 8443;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade \$http_upgrade;
+        proxy_set_header        Connection \$connection_upgrade;
 
-        location /health {
-            access_log off;
-            return 200 "ok";
-            add_header Content-Type text/plain;
-        }
+        proxy_connect_timeout   2s;
+        proxy_send_timeout      30s;
+        proxy_read_timeout      86400s;
 
-        location / {
-            return 302 https://\$host:8443\$request_uri;
-        }
-    }
-
-    # HTTPS
-    server {
-        listen 8443 ssl;
-        http2 on;
-        ssl_certificate     ${CERT_PATH};
-        ssl_certificate_key ${KEY_PATH};
-        ssl_protocols       TLSv1.2 TLSv1.3;
-        ssl_ciphers         HIGH:!aNULL:!MD5;
-        absolute_redirect off;
-
-        gzip on;
-        gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
-        gzip_min_length 1000;
-
-        # Fix: Backend sends Access-Control-Allow-Origin: * with credentials,
-        # which browsers reject. Replace with the actual request origin.
-        proxy_hide_header Access-Control-Allow-Origin;
-        proxy_hide_header Access-Control-Allow-Credentials;
-        add_header Access-Control-Allow-Origin \$http_origin always;
-        add_header Access-Control-Allow-Credentials true always;
-
-        location /health {
-            access_log off;
-            return 200 "ok";
-            add_header Content-Type text/plain;
-        }
-
-        location = /api/v1/events/stream {
-            proxy_pass              http://filaman;
-            proxy_set_header        Host \$http_host;
-            proxy_set_header        X-Real-IP \$remote_addr;
-            proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto https;
-            proxy_set_header        X-Forwarded-Host \$host;
-            proxy_set_header        X-Forwarded-Port 8443;
-            proxy_http_version      1.1;
-            proxy_buffering         off;
-            proxy_cache             off;
-            proxy_read_timeout      86400s;
-            chunked_transfer_encoding off;
-        }
-
-        location / {
-            proxy_pass              http://filaman;
-            proxy_set_header        Host \$http_host;
-            proxy_set_header        X-Real-IP \$remote_addr;
-            proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto https;
-            proxy_set_header        X-Forwarded-Host \$host;
-            proxy_set_header        X-Forwarded-Port 8443;
-            proxy_http_version      1.1;
-            proxy_set_header        Upgrade \$http_upgrade;
-            proxy_set_header        Connection "upgrade";
-            proxy_connect_timeout   2s;
-            proxy_send_timeout      30s;
-            proxy_read_timeout      60s;
-            proxy_buffering         off;
-            proxy_cache             off;
-            proxy_set_header        X-Accel-Buffering no;
-        }
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
     }
 }
 EOF
 
 else
 
-    cat > /etc/nginx/nginx.conf << EOF
-worker_processes auto;
-error_log /dev/stderr warn;
-pid /run/nginx.pid;
-
-events {
-    worker_connections 1024;
+    cat > /etc/nginx/conf.d/default.conf << EOF
+upstream filaman {
+    server 127.0.0.1:8001;
+    keepalive 32;
 }
 
-http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
+map \$http_upgrade \$connection_upgrade {
+    default upgrade;
+    ""      close;
+}
 
-    access_log /dev/stdout;
-
-    sendfile        on;
-    tcp_nopush      on;
-    tcp_nodelay     on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
+server {
+    listen 8000;
 
     gzip on;
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_comp_level 6;
+    gzip_types text/plain text/css application/javascript application/json;
     gzip_min_length 1000;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
-    upstream filaman {
-        server 127.0.0.1:8001;
-        keepalive 32;
+    location /health {
+        access_log off;
+        return 200 "ok";
+        add_header Content-Type text/plain;
     }
 
-    server {
-        listen 8000;
-        absolute_redirect off;
+    location / {
+        proxy_pass              http://filaman;
+        proxy_set_header        Host \$http_host;
+        proxy_set_header        X-Real-IP \$remote_addr;
+        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto http;
+        proxy_set_header        X-Forwarded-Port 8000;
+        proxy_http_version      1.1;
+        proxy_set_header        Upgrade \$http_upgrade;
+        proxy_set_header        Connection \$connection_upgrade;
 
-        gzip on;
-        gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
-        gzip_min_length 1000;
+        proxy_connect_timeout   2s;
+        proxy_send_timeout      30s;
+        proxy_read_timeout      86400s;
 
-        # Fix: Backend sends Access-Control-Allow-Origin: * with credentials,
-        # which browsers reject. Replace with the actual request origin.
-        proxy_hide_header Access-Control-Allow-Origin;
-        proxy_hide_header Access-Control-Allow-Credentials;
-        add_header Access-Control-Allow-Origin \$http_origin always;
-        add_header Access-Control-Allow-Credentials true always;
-
-        location /health {
-            access_log off;
-            return 200 "ok";
-            add_header Content-Type text/plain;
-        }
-
-        location = /api/v1/events/stream {
-            proxy_pass              http://filaman;
-            proxy_set_header        Host \$http_host;
-            proxy_set_header        X-Real-IP \$remote_addr;
-            proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto http;
-            proxy_set_header        X-Forwarded-Host \$host;
-            proxy_set_header        X-Forwarded-Port 8000;
-            proxy_http_version      1.1;
-            proxy_buffering         off;
-            proxy_cache             off;
-            proxy_read_timeout      86400s;
-            chunked_transfer_encoding off;
-        }
-
-        location / {
-            proxy_pass              http://filaman;
-            proxy_set_header        Host \$http_host;
-            proxy_set_header        X-Real-IP \$remote_addr;
-            proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header        X-Forwarded-Proto http;
-            proxy_set_header        X-Forwarded-Host \$host;
-            proxy_set_header        X-Forwarded-Port 8000;
-            proxy_http_version      1.1;
-            proxy_set_header        Upgrade \$http_upgrade;
-            proxy_set_header        Connection "upgrade";
-            proxy_connect_timeout   2s;
-            proxy_send_timeout      30s;
-            proxy_read_timeout      60s;
-            proxy_buffering         off;
-            proxy_cache             off;
-            proxy_set_header        X-Accel-Buffering no;
-        }
+        proxy_buffering         off;
+        proxy_cache             off;
+        proxy_set_header        X-Accel-Buffering no;
     }
 }
 EOF
@@ -241,7 +152,7 @@ exec gunicorn --chdir /app \
     -w 4 \
     -k uvicorn.workers.UvicornWorker \
     app.main:app \
-    --bind 127.0.0.1:8001 \
+    --bind 0.0.0.0:8001 \
     --forwarded-allow-ips='*' \
     --timeout 120 \
     --graceful-timeout 10 \
@@ -249,3 +160,4 @@ exec gunicorn --chdir /app \
     --max-requests-jitter 100 \
     --access-logfile - \
     --error-logfile -
+    
