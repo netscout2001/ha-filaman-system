@@ -9,10 +9,6 @@ KEYFILE=$(jq --raw-output '.keyfile // "privkey.pem"' $CONFIG_PATH)
 
 echo "SSL enabled: ${SSL}"
 
-rm -f /etc/nginx/sites-enabled/default
-rm -f /etc/nginx/conf.d/default.conf
-mkdir -p /etc/nginx/conf.d
-
 if [ "$SSL" = "true" ]; then
     CERT_PATH="/ssl/${CERTFILE}"
     KEY_PATH="/ssl/${KEYFILE}"
@@ -29,113 +25,186 @@ if [ "$SSL" = "true" ]; then
         KEY_PATH="/ssl/privkey.pem"
     fi
 
-    cat > /etc/nginx/conf.d/default.conf << EOF
-upstream filaman {
-    server 127.0.0.1:8001;
-    keepalive 32;
+    echo "Applying SSL nginx config..."
+    cat > /etc/nginx/nginx.conf << EOF
+worker_processes auto;
+error_log /dev/stderr warn;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
 }
 
-server {
-    listen 8000;
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
 
-    location /health {
-        access_log off;
-        return 200 "ok";
-        add_header Content-Type text/plain;
-    }
+    access_log /dev/stdout;
 
-    location / {
-        return 301 https://\$host:8443\$request_uri;
-    }
-}
-
-server {
-    listen 8443 ssl;
-    http2 on;
-    ssl_certificate     ${CERT_PATH};
-    ssl_certificate_key ${KEY_PATH};
-    ssl_protocols       TLSv1.2 TLSv1.3;
-    ssl_ciphers         HIGH:!aNULL:!MD5;
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
 
     gzip on;
-    gzip_types text/plain text/css application/javascript application/json;
+    gzip_vary on;
+    gzip_proxied any;
+    gzip_comp_level 6;
     gzip_min_length 1000;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
 
-    location /health {
-        access_log off;
-        return 200 "ok";
-        add_header Content-Type text/plain;
+    map \$http_x_forwarded_proto \$proxy_x_forwarded_proto {
+        default \$http_x_forwarded_proto;
+        ""      \$scheme;
     }
 
-    location / {
-        proxy_pass              http://filaman;
-        proxy_set_header        Host \$http_host;
-        proxy_set_header        X-Real-IP \$remote_addr;
-        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header        X-Forwarded-Proto https;
-        proxy_set_header        X-Forwarded-Port 8443;
-        proxy_http_version      1.1;
-        proxy_set_header        Upgrade \$http_upgrade;
-        proxy_set_header        Connection "upgrade";
+    map \$http_x_forwarded_host \$proxy_x_forwarded_host {
+        default \$http_x_forwarded_host;
+        ""      \$host;
+    }
 
-        proxy_connect_timeout   2s;
-        proxy_send_timeout      30s;
-        proxy_read_timeout      86400s;
+    map \$http_upgrade \$connection_upgrade {
+        default upgrade;
+        ""      close;
+    }
 
-        proxy_buffering         off;
-        proxy_cache             off;
-        proxy_set_header        X-Accel-Buffering no;
+    upstream backend {
+        server 127.0.0.1:8001 fail_timeout=0;
+    }
+
+    server {
+        listen 8000;
+        server_name _;
+
+        location /health {
+            access_log off;
+            return 200 "ok";
+            add_header Content-Type text/plain;
+        }
+
+        location / {
+            return 301 https://\$host:8443\$request_uri;
+        }
+    }
+
+    server {
+        listen 8443 ssl;
+        http2 on;
+        server_name _;
+
+        ssl_certificate     ${CERT_PATH};
+        ssl_certificate_key ${KEY_PATH};
+        ssl_protocols       TLSv1.2 TLSv1.3;
+        ssl_ciphers         HIGH:!aNULL:!MD5;
+
+        absolute_redirect off;
+        root /app/static;
+
+        location /_astro/ {
+            expires max;
+            add_header Cache-Control "public, max-age=31536000, immutable";
+            access_log off;
+        }
+
+        location /img/ {
+            expires max;
+            add_header Cache-Control "public, max-age=31536000, immutable";
+            access_log off;
+        }
+
+        location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|avif)$ {
+            expires max;
+            add_header Cache-Control "public, max-age=31536000, immutable";
+            access_log off;
+        }
+
+        location /api/ {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+            proxy_read_timeout 120s;
+        }
+
+        location = /api/v1/events/stream {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+            proxy_buffering off;
+            proxy_cache off;
+            proxy_read_timeout 86400s;
+            chunked_transfer_encoding off;
+        }
+
+        location /auth/ {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+        }
+
+        location /health {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+        }
+
+        location /plugin-page/ {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+        }
+
+        location /spoolman/ {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade \$http_upgrade;
+            proxy_set_header Connection \$connection_upgrade;
+            proxy_read_timeout 86400s;
+        }
+
+        location / {
+            try_files \$uri \$uri/ \$uri/index.html @backend;
+            add_header Cache-Control "no-cache";
+        }
+
+        location @backend {
+            proxy_pass http://backend;
+            proxy_set_header Host \$host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto https;
+            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+        }
     }
 }
 EOF
+
+    echo "Reloading nginx with SSL config..."
+    nginx -s reload
 
 else
-
-    cat > /etc/nginx/conf.d/default.conf << EOF
-upstream filaman {
-    server 127.0.0.1:8001;
-    keepalive 32;
-}
-
-server {
-    listen 8000;
-
-    gzip on;
-    gzip_types text/plain text/css application/javascript application/json;
-    gzip_min_length 1000;
-
-    location /health {
-        access_log off;
-        return 200 "ok";
-        add_header Content-Type text/plain;
-    }
-
-    location / {
-        proxy_pass              http://filaman;
-        proxy_set_header        Host \$http_host;
-        proxy_set_header        X-Real-IP \$remote_addr;
-        proxy_set_header        X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header        X-Forwarded-Proto http;
-        proxy_set_header        X-Forwarded-Port 8000;
-        proxy_http_version      1.1;
-        proxy_set_header        Upgrade \$http_upgrade;
-        proxy_set_header        Connection "upgrade";
-
-        proxy_connect_timeout   2s;
-        proxy_send_timeout      30s;
-        proxy_read_timeout      86400s;
-
-        proxy_buffering         off;
-        proxy_cache             off;
-        proxy_set_header        X-Accel-Buffering no;
-    }
-}
-EOF
-
+    echo "SSL disabled, keeping upstream nginx config..."
 fi
-
-echo "Starting nginx..."
-nginx
 
 echo "Starting FilaMan app..."
 exec gunicorn --chdir /app \
