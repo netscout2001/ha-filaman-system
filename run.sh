@@ -35,11 +35,6 @@ upstream filaman {
     keepalive 32;
 }
 
-map \$http_upgrade \$connection_upgrade {
-    default upgrade;
-    ""      close;
-}
-
 server {
     listen 8000;
 
@@ -81,7 +76,7 @@ server {
         proxy_set_header        X-Forwarded-Port 8443;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
-        proxy_set_header        Connection \$connection_upgrade;
+        proxy_set_header        Connection "upgrade";
 
         proxy_connect_timeout   2s;
         proxy_send_timeout      30s;
@@ -100,11 +95,6 @@ else
 upstream filaman {
     server 127.0.0.1:8001;
     keepalive 32;
-}
-
-map \$http_upgrade \$connection_upgrade {
-    default upgrade;
-    ""      close;
 }
 
 server {
@@ -129,7 +119,7 @@ server {
         proxy_set_header        X-Forwarded-Port 8000;
         proxy_http_version      1.1;
         proxy_set_header        Upgrade \$http_upgrade;
-        proxy_set_header        Connection \$connection_upgrade;
+        proxy_set_header        Connection "upgrade";
 
         proxy_connect_timeout   2s;
         proxy_send_timeout      30s;
@@ -160,4 +150,3 @@ exec gunicorn --chdir /app \
     --max-requests-jitter 100 \
     --access-logfile - \
     --error-logfile -
-    
