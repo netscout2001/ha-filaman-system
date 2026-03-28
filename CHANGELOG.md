@@ -1,3 +1,32 @@
+## [1.1.18-0] - 2026-03-28
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.18`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(cache): add lightweight in-memory cache with TTL for API data (Manuel Weiser, 47d1ec4)
+- feat: enhance nginx configuration for WebSocket support and improve proxy settings (Manuel Weiser, 4ee593a)
+- feat: enable editing of user-created extra fields; add edit functionality and update UI accordingly (Manuel Weiser, 6a61dfa)
+- feat: add sortable columns for filaments, manufacturers, and spools; enhance changelog with additional translations (Manuel Weiser, 7dff5cb)
+- feat: add missing translations for field types and dropdown options in English and German (Manuel Weiser, bb93fc7)
+- feat: enhance filaments, manufacturers, and spools pages with additional columns and improved column visibility management (Manuel Weiser, a9c7336)
+
+### Fixes
+- fix: update version from UNRELEASED to 1.1.17 in changelog (Manuel Weiser, cb4c0ce)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.18 (gitea-actions, 323f212)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.17...v1.1.18
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.18)
+
 ## [1.1.17-0] - 2026-03-27
 
 ## Artefakte
