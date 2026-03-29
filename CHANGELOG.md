@@ -1,3 +1,10 @@
+## v1.1.20-1
+
+Aligns with upstream FilaMan v1.1.20.
+
+### Fixes
+- fix: nginx nicht gestartet bei SSL=false → ERR_CONNECTION_REFUSED behoben
+
 ## [1.1.20-0] - 2026-03-29
 
 ## Artefakte
