@@ -205,7 +205,8 @@ EOF
     nginx
 
 else
-    echo "SSL disabled, keeping upstream nginx config..."
+    echo "SSL disabled, starting nginx with upstream config..."
+    nginx
 fi
 
 echo "Starting FilaMan app..."
