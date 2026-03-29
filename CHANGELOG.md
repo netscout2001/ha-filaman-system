@@ -1,3 +1,29 @@
+## [1.1.19-0] - 2026-03-29
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.19`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(watchdog): implement driver health monitoring and automatic recovery fix(changelog): update messages for SQLite startup issues and printer connection monitoring (Manuel Weiser, 1e120db)
+- feat(middleware): implement background task for updating last_used_at to avoid SQLAlchemy concurrency issues (Manuel Weiser, d67f3cd)
+- feat(database): update SQLite connection handling to use NullPool for improved concurrency (Manuel Weiser, ab64bae)
+
+### Fixes
+- fix(database): revert to QueuePool for SQLite to avoid file-lock issues with multiple Gunicorn workers (Manuel Weiser, 5f7f761)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.19 (gitea-actions, 97b09d3)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.18...v1.1.19
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.19)
+
 ## [1.1.18-0] - 2026-03-28
 
 ## Artefakte
