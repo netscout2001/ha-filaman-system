@@ -1,3 +1,26 @@
+## [1.1.20-0] - 2026-03-29
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.20`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(shared_health): implement cross-worker shared health state for driver status synchronization fix(changelog): update changelog with reliable printer driver status display fix (Manuel Weiser, 1815b1e)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.20 (gitea-actions, 40f1182)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.19...v1.1.20
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.20)
+
 ## [1.1.19-0] - 2026-03-29
 
 ## Artefakte
