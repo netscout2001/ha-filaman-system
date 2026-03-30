@@ -27,16 +27,16 @@ if [ "$SSL" = "true" ]; then
 
     echo "Patching upstream nginx config for SSL..."
 
-    # 1. Port 8000 → 8443 ssl + http2
-    sed -i 's/^    listen 8000;$/    listen 8443 ssl;\n    http2 on;/' /etc/nginx/nginx.conf
+    # 1. listen 8000 → 8443 ssl + http2 (Einrückung egal)
+    sed -i 's/^[[:space:]]*listen 8000;/        listen 8443 ssl;\n        http2 on;/' /etc/nginx/nginx.conf
 
-    # 2. SSL Zertifikate nach server_name einfügen
-    sed -i "/^    server_name _;/a\\    ssl_certificate     ${CERT_PATH};\n    ssl_certificate_key ${KEY_PATH};\n    ssl_protocols       TLSv1.2 TLSv1.3;\n    ssl_ciphers         HIGH:!aNULL:!MD5;" /etc/nginx/nginx.conf
+    # 2. SSL Zertifikate nach server_name einfügen (Einrückung egal)
+    sed -i "/^[[:space:]]*server_name _;/a\\        ssl_certificate     ${CERT_PATH};\n        ssl_certificate_key ${KEY_PATH};\n        ssl_protocols       TLSv1.2 TLSv1.3;\n        ssl_ciphers         HIGH:!aNULL:!MD5;" /etc/nginx/nginx.conf
 
     # 3. X-Forwarded-Proto auf https hardcoden
     sed -i 's/\$proxy_x_forwarded_proto;/https;/g' /etc/nginx/nginx.conf
 
-    # 4. Port 8000 Redirect-Block anhängen (vor letzter })
+    # 4. Port 8000 Redirect-Block vor letzter } anhängen
     head -n -1 /etc/nginx/nginx.conf > /tmp/nginx_ssl.conf
     cat >> /tmp/nginx_ssl.conf << 'NGINXEOF'
     server {
