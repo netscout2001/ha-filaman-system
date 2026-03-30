@@ -25,179 +25,35 @@ if [ "$SSL" = "true" ]; then
         KEY_PATH="/ssl/privkey.pem"
     fi
 
-    echo "Applying SSL nginx config..."
-    cat > /etc/nginx/nginx.conf << EOF
-worker_processes auto;
-error_log /dev/stderr warn;
-pid /run/nginx.pid;
+    echo "Patching upstream nginx config for SSL..."
 
-events {
-    worker_connections 1024;
-}
+    # 1. Port 8000 → 8443 ssl + http2
+    sed -i 's/^    listen 8000;$/    listen 8443 ssl;\n    http2 on;/' /etc/nginx/nginx.conf
 
-http {
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
+    # 2. SSL Zertifikate nach server_name einfügen
+    sed -i "/^    server_name _;/a\\    ssl_certificate     ${CERT_PATH};\n    ssl_certificate_key ${KEY_PATH};\n    ssl_protocols       TLSv1.2 TLSv1.3;\n    ssl_ciphers         HIGH:!aNULL:!MD5;" /etc/nginx/nginx.conf
 
-    access_log /dev/stdout;
+    # 3. X-Forwarded-Proto auf https hardcoden
+    sed -i 's/\$proxy_x_forwarded_proto;/https;/g' /etc/nginx/nginx.conf
 
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 65;
-    types_hash_max_size 2048;
-
-    gzip on;
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_min_length 1000;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
-
-    map \$http_x_forwarded_proto \$proxy_x_forwarded_proto {
-        default \$http_x_forwarded_proto;
-        ""      \$scheme;
-    }
-
-    map \$http_x_forwarded_host \$proxy_x_forwarded_host {
-        default \$http_x_forwarded_host;
-        ""      \$host;
-    }
-
-    map \$http_upgrade \$connection_upgrade {
-        default upgrade;
-        ""      close;
-    }
-
-    upstream backend {
-        server 127.0.0.1:8001 fail_timeout=0;
-    }
-
+    # 4. Port 8000 Redirect-Block anhängen (vor letzter })
+    head -n -1 /etc/nginx/nginx.conf > /tmp/nginx_ssl.conf
+    cat >> /tmp/nginx_ssl.conf << 'NGINXEOF'
     server {
         listen 8000;
         server_name _;
-
         location /health {
             access_log off;
             return 200 "ok";
             add_header Content-Type text/plain;
         }
-
         location / {
-            return 301 https://\$host:8443\$request_uri;
-        }
-    }
-
-    server {
-        listen 8443 ssl;
-        http2 on;
-        server_name _;
-
-        ssl_certificate     ${CERT_PATH};
-        ssl_certificate_key ${KEY_PATH};
-        ssl_protocols       TLSv1.2 TLSv1.3;
-        ssl_ciphers         HIGH:!aNULL:!MD5;
-
-        absolute_redirect off;
-        root /app/static;
-
-        location /_astro/ {
-            expires max;
-            add_header Cache-Control "public, max-age=31536000, immutable";
-            access_log off;
-        }
-
-        location /img/ {
-            expires max;
-            add_header Cache-Control "public, max-age=31536000, immutable";
-            access_log off;
-        }
-
-        location ~* \.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|webp|avif)$ {
-            expires max;
-            add_header Cache-Control "public, max-age=31536000, immutable";
-            access_log off;
-        }
-
-        location /api/ {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-            proxy_read_timeout 120s;
-        }
-
-        location = /api/v1/events/stream {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-            proxy_buffering off;
-            proxy_cache off;
-            proxy_read_timeout 86400s;
-            chunked_transfer_encoding off;
-        }
-
-        location /auth/ {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-        }
-
-        location /health {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-        }
-
-        location /plugin-page/ {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-        }
-
-        location /spoolman/ {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade \$http_upgrade;
-            proxy_set_header Connection \$connection_upgrade;
-            proxy_read_timeout 86400s;
-        }
-
-        location / {
-            try_files \$uri \$uri/ \$uri/index.html @backend;
-            add_header Cache-Control "no-cache";
-        }
-
-        location @backend {
-            proxy_pass http://backend;
-            proxy_set_header Host \$host;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header X-Forwarded-Host \$proxy_x_forwarded_host;
+            return 301 https://$host:8443$request_uri;
         }
     }
 }
-EOF
+NGINXEOF
+    mv /tmp/nginx_ssl.conf /etc/nginx/nginx.conf
 
     echo "Restarting nginx with SSL config..."
     nginx -s quit 2>/dev/null || true
