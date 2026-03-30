@@ -1,3 +1,26 @@
+## [1.1.21-0] - 2026-03-30
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.21`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix(database): remove QueuePool for SQLite and ensure reliable connection pooling for PostgreSQL/MySQL chore(changelog): add entry for unreleased fix regarding database connection reliability (Manuel Weiser, 36af3cc)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.21 (gitea-actions, 61ae2ba)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.20...v1.1.21
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.21)
+
 ## [v1.1.20-2] - 2026-03-30
 
 ### Changes
