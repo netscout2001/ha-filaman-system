@@ -1,3 +1,11 @@
+## v1.1.20-2
+
+### Changes
+- fix: SSL=false nginx wurde nicht gestartet → ERR_CONNECTION_REFUSED behoben
+- refactor: SSL-Konfiguration patcht jetzt Manuels nginx.conf dynamisch per sed
+  statt eine vollständige Kopie zu pflegen — reduziert Wartungsaufwand bei
+  upstream nginx-Updates erheblich
+  
 ## v1.1.20-1
 
 Aligns with upstream FilaMan v1.1.20.
