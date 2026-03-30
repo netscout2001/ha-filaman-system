@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # IMPORTANT: Starting with v1.1.12, the upstream docker-entrypoint.sh starts
-# nginx itself (port 8000) before exec-ing CMD.  Our run.sh also starts nginx,
+# nginx itself (port 8000) before exec-ing CMD. Our run.sh also starts nginx,
 # which would cause a port-8000 conflict and crash the container.
 # Solution: strip the nginx-start lines from the upstream entrypoint so that
 # run.sh retains full control of nginx (including SSL handling).
