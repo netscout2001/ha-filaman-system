@@ -1,3 +1,26 @@
+## [1.1.22-0] - 2026-04-01
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.22`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix(dashboard): ensure reliable loading of dashboard statistics, preventing 500 errors on overview page (Manuel Weiser, 56b1c09)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.22 (gitea-actions, fd12dbd)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.21...v1.1.22
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.22)
+
 ## [1.1.21-0] - 2026-03-30
 
 ## Artefakte
