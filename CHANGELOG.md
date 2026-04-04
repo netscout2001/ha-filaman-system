@@ -1,3 +1,27 @@
+## [1.1.24-0] - 2026-04-04
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.24`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(cache): implement caching for API data with localStorage and TTL (Manuel Weiser, 5f496e7)
+
+### Fixes
+- fix: prevent duplicate manufacturer material filters (akira69, 5efaae1)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.24 (gitea-actions, efb619f)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.23...v1.1.24
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.24)
+
 ## [1.1.23-0] - 2026-04-04
 
 ## Artefakte
