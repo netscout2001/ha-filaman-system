@@ -1,3 +1,26 @@
+## [1.1.23-0] - 2026-04-04
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.23`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat(cache): implement caching for extra fields and invalidate on updates; add slow-request logging middleware (Manuel Weiser, f4da3c8)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.23 (gitea-actions, afcfa27)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.22...v1.1.23
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.23)
+
 ## [1.1.22-0] - 2026-04-01
 
 ## Artefakte
