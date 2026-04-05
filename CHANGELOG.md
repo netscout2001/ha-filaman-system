@@ -1,3 +1,26 @@
+## [1.1.25-0] - 2026-04-05
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.1.25`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add abort signal handling to fetch requests across multiple pages (Manuel Weiser, fe25809)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.1.25 (gitea-actions, c124f4f)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.24...v1.1.25
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.1.25)
+
 ## [1.1.24-0] - 2026-04-04
 
 ## Artefakte
