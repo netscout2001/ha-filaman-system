@@ -1,3 +1,40 @@
+## [1.2.1-0] - 2026-04-08
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.1`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: enhance manufacturer display with logo integration in filament details (Manuel Weiser, c2e2744)
+- feat: improve manufacturer logo display with enhanced styling and layout adjustments (Manuel Weiser, d7e1366)
+- feat: implement fuzzy search scoring and enhance manufacturer lookup functionality (Manuel Weiser, a530abf)
+- feat: add automatic manufacturer logo download during filament import and enhance editing functionality (Manuel Weiser, 376427d)
+- feat: implement manufacturer logo management with download and display functionality (Manuel Weiser, e523f88)
+- feat: add FilamentDB plugin status check and integrate into various components feat: enhance spool profile lookup functionality with FilamentDB integration feat: update changelog for new FilamentDB features and improvements feat: implement manufacturer-based filtering in FilamentDB lookup feat: prevent uninstallation of built-in plugins and update UI accordingly (Manuel Weiser, 735befd)
+- feat: enhance FilamentDB lookup with manufacturer-based filtering and image support (Manuel Weiser, 27d15b5)
+- feat: integrate FilamentDB lookup functionality across various components (Manuel Weiser, 4c2f29e)
+- feat: update FilamentDB import button and add pre-import check functionality (Manuel Weiser, 5b65724)
+- feat: implement fuzzy matching for filament imports with user rejection handling (Manuel Weiser, 8d623cd)
+- feat: add filament update functionality in FilamentDB import with diff preview refactor: enhance UI for filament import diff section and update handling fix: improve loading messages and error handling in filament import process chore: update changelog for new filament update features (Manuel Weiser, 6a430ee)
+- feat: implement manufacturer search and loading of filaments in FilamentDB import (Manuel Weiser, 1fe123a)
+- feat: add FilamentDB import functionality with preview and settings steps (Manuel Weiser, c929836)
+- feat: implement full activation/deactivation of plugins with automatic printer management (Manuel Weiser, ae5d3b8)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.1 (gitea-actions, 306f31e)
+- refactor: update FilamentDB import steps and improve UI/UX (Manuel Weiser, f075e7b)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.1.25...v1.2.1
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.1)
+
 ## [1.1.25-0] - 2026-04-05
 
 ## Artefakte
