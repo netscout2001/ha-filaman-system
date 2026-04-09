@@ -1,3 +1,25 @@
+## [1.2.3-0] - 2026-04-09
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.3`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: ensure FilaManDB import handles multiple colors without unique positions (Manuel Weiser, babba6b)
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.2...v1.2.3
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.3)
+
 ## [1.2.1-0] - 2026-04-08
 
 ## Artefakte
