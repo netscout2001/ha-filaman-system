@@ -1,3 +1,25 @@
+## [1.2.4-0] - 2026-04-09
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.4`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: enable sorting of filament list by manufacturer without errors (Manuel Weiser, 9b75fae)
+
+### Fixes
+
+### Chore/Refactor/Deps
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.3...v1.2.4
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.4)
+
 ## [1.2.3-0] - 2026-04-09
 
 ## Artefakte
