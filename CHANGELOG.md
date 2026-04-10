@@ -1,3 +1,26 @@
+## [1.2.5-0] - 2026-04-10
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.5`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+
+### Fixes
+- fix: behebe Importfehler bei wiederholtem Löschen und Neuimportieren von Filamenten (Manuel Weiser, f69d8f5)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.5 (gitea-actions, fbbf145)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.4...v1.2.5
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.5)
+
 ## [1.2.4-0] - 2026-04-09
 
 ## Artefakte
