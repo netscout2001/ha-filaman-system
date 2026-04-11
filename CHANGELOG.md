@@ -1,3 +1,28 @@
+## [1.2.7-0] - 2026-04-11
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.7`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add drag & drop column reordering and reset functionality for tables (Manuel Weiser, 1b0e5a7)
+- feat: improve sorting reliability in spool overview (Manuel Weiser, 86eb97c)
+- feat: add status filter for archived spools in list_spools function (Manuel Weiser, cb797b3)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.7 (gitea-actions, ec12e09)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.6...v1.2.7
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.7)
+
 ## [1.2.6-0] - 2026-04-10
 
 ## Artefakte
