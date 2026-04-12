@@ -1,3 +1,26 @@
+## [1.2.8-0] - 2026-04-12
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.8`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add flush after inventory data import to ensure data consistency fix: update changelog with backup import issue for databases with roles and permissions (Manuel Weiser, beb6de0)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.8 (gitea-actions, 613ed3b)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.7...v1.2.8
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.8)
+
 ## [1.2.7-0] - 2026-04-11
 
 ## Artefakte
