@@ -1,3 +1,28 @@
+## [1.2.9-0] - 2026-04-15
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.9`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: add redirect from /spool to /spools for improved API access (Manuel Weiser, 67dfe5f)
+- feat: add fix for backup import failure on large databases due to FOREIGN KEY constraint (Manuel Weiser, 23fda46)
+- feat: increase client max body size to 100m for backup restore (Manuel Weiser, 2f986d3)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.9 (gitea-actions, fc97507)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.8...v1.2.9
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.9)
+
 ## [1.2.8-0] - 2026-04-12
 
 ## Artefakte
