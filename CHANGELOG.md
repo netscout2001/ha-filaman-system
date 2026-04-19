@@ -1,3 +1,27 @@
+## [1.2.10-0] - 2026-04-19
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.10`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: improve active navigation highlighting logic (Manuel Weiser, a6e60e6)
+- feat: enable sorting of filaments by spool count (Manuel Weiser, bb373d8)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.10 (gitea-actions, cbbef8f)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.9...v1.2.10
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.10)
+
 ## [1.2.9-0] - 2026-04-15
 
 ## Artefakte
