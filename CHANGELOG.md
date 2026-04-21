@@ -1,3 +1,26 @@
+## [1.2.12-0] - 2026-04-21
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.12`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: update changelog and improve filament sorting functionality (Manuel Weiser, 024f839)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.12 (gitea-actions, 6179dc3)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.11...v1.2.12
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.12)
+
 ## [1.2.11-0] - 2026-04-21
 
 ## Artefakte
