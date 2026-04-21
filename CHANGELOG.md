@@ -1,3 +1,30 @@
+## [1.2.11-0] - 2026-04-21
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.11`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: oversample QR code for improved clarity on Retina screens and PNG export (Manuel Weiser, b6397cd)
+- feat: add PNG export functionality for spool labels and update changelog (Manuel Weiser, 440b840)
+- feat: update changelog for sorting and sidebar highlighting fixes (Manuel Weiser, bb34589)
+- feat: improve column resize handle styling and visibility (Manuel Weiser, 0729bc4)
+- feat: add column resizing functionality and update changelog (Manuel Weiser, 49c2458)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.11 (gitea-actions, 0107300)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.10...v1.2.11
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.11)
+
 ## [1.2.10-0] - 2026-04-19
 
 ## Artefakte
