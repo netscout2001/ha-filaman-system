@@ -1,3 +1,29 @@
+## [1.2.14-0] - 2026-04-22
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.14`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Automatische Korrektur des verbleibenden Gewichts beim Ändern des Leerspulen-Gewichts (Manuel Weiser, 57f27f6)
+- feat: Fehlerbehebung beim Anpassen von Spulen und Aktualisierung des Änderungsprotokolls (Manuel Weiser, f561779)
+- feat: hinzufügen von Docker Build & Push Workflow (Manuel Weiser, cc6d4bf)
+
+### Fixes
+- fix: replace runtime CDN loading of jsPDF/JSZip with local npm imports (copilot-swe-agent[bot], 5e0cbbf)
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.14 (gitea-actions, d5d1ad8)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.13...v1.2.14
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.14)
+
 ## [1.2.13-0] - 2026-04-22
 
 ## Artefakte
