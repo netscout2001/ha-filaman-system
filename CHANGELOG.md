@@ -1,3 +1,26 @@
+## [1.2.16-0] - 2026-04-27
+
+## Artefakte
+
+- Docker: `ghcr.io/fire-devils/filaman-system:v1.2.16`
+- Docker: `ghcr.io/fire-devils/filaman-system:latest`
+
+## Änderungen
+
+### Features
+- feat: Ermögliche das Einbetten von FilaMan-Seiten in Anwendungen wie Bambuddy und aktualisiere das Änderungsprotokoll (Manuel Weiser, d73e475)
+
+### Fixes
+
+### Chore/Refactor/Deps
+- chore: stamp changelog for 1.2.16 (gitea-actions, 5ac644c)
+
+### Dokumentation/Tests
+
+**Full diff:** https://github.com/Fire-Devils/filaman-system/compare/v1.2.15...v1.2.16
+
+(Upstream release: https://github.com/Fire-Devils/filaman-system/releases/tag/v1.2.16)
+
 ## [1.2.14-0] - 2026-04-22
 
 ## Artefakte
